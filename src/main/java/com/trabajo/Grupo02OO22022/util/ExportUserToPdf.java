@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.aplication.entity.User;
+import com.trabajo.Grupo02OO22022.entity.*;
 import com.lowagie.text.Document;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
@@ -161,7 +161,7 @@ public class ExportUserToPdf extends AbstractPdfView {
             celda1.setPadding(5);
             tablaUsers.addCell(celda1);
 
-            celda1 = new PdfPCell(new Phrase(user.getRole().getTipo(), fuenteContenidoData));
+            celda1 = new PdfPCell(new Phrase(user.getRole().getDescripcion(), fuenteContenidoData));
             celda1.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             celda1.setVerticalAlignment(PdfPCell.ALIGN_CENTER);
             celda1.setPadding(5);

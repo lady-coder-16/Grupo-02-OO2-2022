@@ -44,12 +44,12 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="/views/users/" >Lista
+							<a class="nav-link" href="/views/users/"  sec:authorize="isAuthenticated()">Lista
 								Usuarios</a>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="/views/roles/" >Lista Roles</a>
+							<a class="nav-link" href="/views/roles/"  sec:authorize="isAuthenticated()" >Lista Roles</a>
 						</li>
 						
 						<li>

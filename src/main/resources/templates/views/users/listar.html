@@ -21,8 +21,9 @@
 
             <div class="container">
                 <p>
-                    <a class="btn btn-primary btn-sm" th:href="@{/views/users/create}" role="button">Nuevo
+                    <a class="btn btn-primary btn-sm" th:href="@{/views/users/create}" sec:authorize= "hasRole('ROLE_ADMIN')" role="button">Nuevo
                         Usuario</a>
+                    <a class="btn btn-success btn-sm" th:href="@{/views/users/(format=pdf)}" sec:authorize= "hasRole('ROLE_AUDITOR')" role="button">Exportar a PDF
                     </a> 
                 </a>
 
@@ -57,9 +58,9 @@
                         <td th:text="${cl.role.descripcion}"></td>
 
                         <!--Boton Editar-->
-                        <td><a class="btn btn-success btn-sm" th:href="@{/views/users/edit/}+${cl.id}" role="button">Edit</a></td>
+                        <td><a class="btn btn-success btn-sm" th:href="@{/views/users/edit/}+${cl.id}" sec:authorize= "hasRole('ROLE_ADMIN')" role="button">Edit</a></td>
                          <!--Boton borrar-->
-                        <td><a class="btn btn-danger btn-sm" th:href="@{/views/users/delete/}+${cl.id}" role="button"
+                        <td><a class="btn btn-danger btn-sm" th:href="@{/views/users/delete/}+${cl.id}" sec:authorize= "hasRole('ROLE_ADMIN')" role="button"
                                 onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
 
 

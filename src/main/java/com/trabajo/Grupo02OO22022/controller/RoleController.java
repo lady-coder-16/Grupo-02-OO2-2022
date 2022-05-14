@@ -12,6 +12,7 @@ import com.trabajo.Grupo02OO22022.service.IUserService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,7 @@ public class RoleController {
     @Autowired
     private IRoleService roleService;
 
+    @Secured({"ROLE_ADMIN","ROLE_AUDITOR"})
     @GetMapping("/")
     public String listarRoles(Model model) {
         List<Role> listadoRoles = roleService.listarActivos();
@@ -40,6 +42,7 @@ public class RoleController {
         return ViewRouteHelper.LISTAR_ROLES;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/create")
     public String crear(Model model) {
         Role role = new Role();
@@ -53,6 +56,7 @@ public class RoleController {
 
     // ********************* ABM Role ******************** */
     // Guardar User en BD
+    @Secured("ROLE_ADMIN")
     @PostMapping("/save")
     public String guardar(@Valid @ModelAttribute Role role, BindingResult result, Model model,
             RedirectAttributes attributes) {
@@ -73,6 +77,7 @@ public class RoleController {
         return ViewRouteHelper.REDIRECT_ROLE;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/edit/{id}")
     public String editar(@PathVariable("id") Long idRole, Model model, RedirectAttributes attributes) {
 
@@ -98,7 +103,7 @@ public class RoleController {
         return ViewRouteHelper.CREAR_ROLES;
     }
 
-
+    @Secured("ROLE_ADMIN")
 	@GetMapping("/delete/{id}")
 	public String eliminar(@PathVariable("id") Long idRole, RedirectAttributes attribute) {
 

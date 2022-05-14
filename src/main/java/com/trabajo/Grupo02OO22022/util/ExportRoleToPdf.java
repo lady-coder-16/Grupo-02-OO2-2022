@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.aplication.entity.Role;
+import com.trabajo.Grupo02OO22022.entity.*;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.Font;
@@ -82,7 +82,7 @@ public class ExportRoleToPdf extends AbstractPdfView {
 
             PdfPCell celda1 = null;
 
-            celda1 = new PdfPCell(new Phrase(role.getTipo(), fuenteContenidoData));
+            celda1 = new PdfPCell(new Phrase(role.getDescripcion(), fuenteContenidoData));
             celda1.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             celda1.setVerticalAlignment(PdfPCell.ALIGN_CENTER);
             celda1.setPadding(5);

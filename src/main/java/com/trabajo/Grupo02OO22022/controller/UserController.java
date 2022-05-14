@@ -12,6 +12,7 @@ import com.trabajo.Grupo02OO22022.service.IUserService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,7 @@ public class UserController {
     //@Autowired
     //private IPersonaService personaService;
 
+    @Secured({"ROLE_ADMIN","ROLE_AUDITOR"})
     @GetMapping("/")
     public String listarUsers(Model model) {
         List<User> listadoUsers = userService.listarActivos();
@@ -45,6 +47,7 @@ public class UserController {
         return ViewRouteHelper.LISTAR;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/create")
     public String crear(Model model) {
 
@@ -58,6 +61,7 @@ public class UserController {
 
     // ********************* ABM User ******************** */
     // Guardar User en BD
+    @Secured("ROLE_ADMIN")
     @PostMapping("/save")
     public String guardar(@Valid @ModelAttribute User user, BindingResult result, Model model,
             RedirectAttributes attributes) {
@@ -84,6 +88,7 @@ public class UserController {
         return ViewRouteHelper.REDIRECT_CLIENTE;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("/edit/{id}")
     public String editar(@PathVariable("id") Long idUser, Model model, RedirectAttributes attributes) {
 
@@ -104,6 +109,7 @@ public class UserController {
        return ViewRouteHelper.CREAR;
     }
 
+    @Secured("ROLE_ADMIN")
 	@GetMapping("/delete/{id}")
 	public String eliminar(@PathVariable("id") Long idUser, RedirectAttributes attribute) {
 
