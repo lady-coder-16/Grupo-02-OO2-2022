@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -37,7 +38,8 @@ public class Edificio implements Serializable {
 	//El set si que no se como codearlo para la bd
 	@NotEmpty
 	@Column(name = "aulas", nullable = false)
-	private Set <Aula> aulas;
+	@OneToMany(mappedBy = "edificio")  
+	private Set<Aula> aulas;
 	
 	
 	

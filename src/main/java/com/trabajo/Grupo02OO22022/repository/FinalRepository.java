@@ -12,6 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface FinalRepository extends CrudRepository<Final, Long>{
 
     List<Final> findAll();
-    List<Final> findByEnabledTrue();
 
 }

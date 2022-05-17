@@ -12,6 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface CursoRepository extends CrudRepository<Curso, Long>{
 
     List<Curso> findAll();
-    List<Curso> findByEnabledTrue();
     
 }

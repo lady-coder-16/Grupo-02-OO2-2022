@@ -9,7 +9,6 @@ public interface IFinalService {
 
     public List <Final> listaFinal();
     public List <Final> listarTodos();
-    public List <Final> listarActivos();
     public void guardar (Final user);
     public Final buscarPorID (long id);
     public void eliminar (long id);

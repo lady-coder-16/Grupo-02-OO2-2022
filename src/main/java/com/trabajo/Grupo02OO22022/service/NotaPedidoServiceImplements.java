@@ -18,10 +18,7 @@ public class NotaPedidoServiceImplements implements INotaPedidoService {
 	    return (List<NotaPedido>) notaRepository.findAll();
 	}
 
-	@Override
-	public List<NotaPedido> listarActivos() {
-		 return (List<NotaPedido>)notaRepository.findByEnabledTrue();
-	}
+	
 
 	@Override
 	public NotaPedido buscarPorID(long id) {

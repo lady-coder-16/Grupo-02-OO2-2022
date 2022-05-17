@@ -12,5 +12,4 @@ import org.springframework.stereotype.Repository;
 public interface CarreraRepository extends CrudRepository<Carrera, Long> {
 
     List<Carrera> findAll();
-    List<Carrera> findByEnabledTrue();
 }

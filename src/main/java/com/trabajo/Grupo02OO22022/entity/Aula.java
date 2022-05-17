@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -14,11 +18,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "aula")
 @Getter
 @Setter
 @RequiredArgsConstructor
-
 public class Aula implements Serializable {
 
 	/**
@@ -34,6 +38,8 @@ public class Aula implements Serializable {
 	@Column(name = "numero", nullable = false)
 	private int numero;
 	
+	@ManyToOne
+    @JoinColumn(name = "edificio_id")
 	private Edificio edificio;
 	
 	

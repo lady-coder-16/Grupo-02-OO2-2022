@@ -41,10 +41,6 @@ public class FinalServiceImplements implements IFinalService {
         FinalRepository.deleteById(id);
     }
 
-    @Override
-    public List<Final> listarActivos() {
-        return (List<Final>)FinalRepository.findByEnabledTrue();
-    }
-
+   
     
 }

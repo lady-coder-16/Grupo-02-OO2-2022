@@ -40,10 +40,7 @@ public class TradicionalServiceImplements implements ITradicionalService {
         TradicionalRepository.deleteById(id);
     }
 
-    @Override
-    public List<Tradicional> listarActivos() {
-        return (List<Tradicional>)TradicionalRepository.findByEnabledTrue();
-    }
+   
 
     
 }

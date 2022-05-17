@@ -12,7 +12,6 @@ import com.trabajo.Grupo02OO22022.entity.NotaPedido;
 public interface NotaPedidoRepository extends CrudRepository<NotaPedido, Long>{
 
     List<NotaPedido> findAll();
-    List<NotaPedido> findByEnabledTrue();
     
 
 }

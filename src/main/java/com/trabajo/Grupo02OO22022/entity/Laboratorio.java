@@ -1,8 +1,5 @@
 package com.trabajo.Grupo02OO22022.entity;
 
-
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -17,8 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-
-
 public class Laboratorio extends Aula{
 
 	/**

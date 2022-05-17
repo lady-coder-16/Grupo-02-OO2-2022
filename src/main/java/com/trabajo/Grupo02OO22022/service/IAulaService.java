@@ -7,10 +7,8 @@ public interface IAulaService {
 
     public List <Aula> listaAulas();
     public List <Aula> listarTodos();
-    public List <Aula> listarActivos();
     public void guardar (Aula user);
     public Aula buscarPorID (long id);
-    public void eliminar (long id);
 
     
 }

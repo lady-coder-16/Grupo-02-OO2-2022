@@ -35,10 +35,6 @@ public class LaboratorioServiceImplements implements ILaboratorioService {
         LaboratorioRepository.deleteById(id);
     }
 
-    @Override
-    public List<Laboratorio> listarActivos() {
-        return (List<Laboratorio>)LaboratorioRepository.findByEnabledTrue();
-    }
-
+   
     
 }

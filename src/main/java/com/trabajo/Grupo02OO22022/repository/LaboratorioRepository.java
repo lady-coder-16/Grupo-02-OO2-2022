@@ -12,5 +12,4 @@ import org.springframework.stereotype.Repository;
 public interface LaboratorioRepository extends CrudRepository<Laboratorio, Long> {
 
     List<Laboratorio> findAll();
-    List<Laboratorio> findByEnabledTrue();
 }

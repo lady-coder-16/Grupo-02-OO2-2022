@@ -40,10 +40,7 @@ public class CursoServiceImplements implements ICursoService {
         CursoRepository.deleteById(id);
     }
 
-    @Override
-    public List<Curso> listarActivos() {
-        return (List<Curso>)CursoRepository.findByEnabledTrue();
-    }
+   
 
     
 }

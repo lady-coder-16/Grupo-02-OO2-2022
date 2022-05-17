@@ -14,11 +14,10 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "Final")
+@Table(name = "final")
 @Getter
 @Setter
 @RequiredArgsConstructor
-
 public class Final extends NotaPedido{
 
 	

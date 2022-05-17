@@ -18,7 +18,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-
 public class Docente extends Persona {
 	@NotEmpty
 	@Column(name="nroLegajo")

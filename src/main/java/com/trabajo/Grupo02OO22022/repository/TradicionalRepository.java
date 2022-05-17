@@ -12,5 +12,4 @@ import org.springframework.stereotype.Repository;
 public interface TradicionalRepository extends CrudRepository<Tradicional, Long> {
 
     List<Tradicional> findAll();
-    List<Tradicional> findByEnabledTrue();
 }

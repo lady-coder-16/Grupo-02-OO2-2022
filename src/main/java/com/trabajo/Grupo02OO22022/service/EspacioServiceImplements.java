@@ -42,7 +42,7 @@ public class EspacioServiceImplements implements IEspacioService {
 
     @Override
     public List<Espacio> listarActivos() {
-        return (List<Espacio>)EspacioRepository.findByEnabledTrue();
+        return (List<Espacio>)EspacioRepository.findByLibreTrue();
     }
 
     

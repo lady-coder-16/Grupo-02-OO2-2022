@@ -40,10 +40,6 @@ public class CarreraServiceImplements implements ICarreraService {
         CarreraRepository.deleteById(id);
     }
 
-    @Override
-    public List<Carrera> listarActivos() {
-        return (List<Carrera>)CarreraRepository.findByEnabledTrue();
-    }
-
+    
     
 }

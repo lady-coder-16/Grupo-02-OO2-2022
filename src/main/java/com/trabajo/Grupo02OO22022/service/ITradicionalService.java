@@ -7,7 +7,6 @@ public interface ITradicionalService {
 
     public List <Tradicional> listaTradicionals();
     public List <Tradicional> listarTodos();
-    public List <Tradicional> listarActivos();
     public void guardar (Tradicional user);
     public Tradicional buscarPorID (long id);
     public void eliminar (long id);

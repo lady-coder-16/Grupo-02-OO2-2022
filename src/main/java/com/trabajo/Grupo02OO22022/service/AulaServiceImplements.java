@@ -34,16 +34,7 @@ public class AulaServiceImplements implements IAulaService {
     public Aula buscarPorID(long id) { 
         return AulaRepository.findById(id).orElse(null);
     }
-
-    @Override
-    public void eliminar(long id) {
-        AulaRepository.deleteById(id);
-    }
-
-    @Override
-    public List<Aula> listarActivos() {
-        return (List<Aula>)AulaRepository.findByEnabledTrue();
-    }
+   
 
     
 }

@@ -7,7 +7,6 @@ public interface ICarreraService {
 
     public List <Carrera> listaCarreras();
     public List <Carrera> listarTodos();
-    public List <Carrera> listarActivos();
     public void guardar (Carrera user);
     public Carrera buscarPorID (long id);
     public void eliminar (long id);

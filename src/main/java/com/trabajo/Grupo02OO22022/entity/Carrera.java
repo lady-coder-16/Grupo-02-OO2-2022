@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -15,8 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "persona")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "carrera")
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -36,8 +35,9 @@ public class Carrera  implements Serializable {
 	@Column(name = "carrera", nullable = false, length = 60)
 	private String carrera;
 	
-	//Falta la relacion entre carrera y dpto
 	@NotEmpty
+	@ManyToOne
+    @JoinColumn(name = "departamento_id")
 	private Departamento departamento; 
 	
 	

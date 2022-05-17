@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface EspacioRepository extends CrudRepository<Espacio, Long> {
 
     List<Espacio> findAll();
-    List<Espacio> findByEnabledTrue();
+    List<Espacio> findByLibreTrue();
 }

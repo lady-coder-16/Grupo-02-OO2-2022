@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import lombok.Getter;
@@ -14,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Materia")
+@Table(name = "materia")
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -38,14 +40,16 @@ public class Materia implements Serializable {
     @Column(name="materia", nullable=false, length=45)
     private String materia;
     
-    @Column(name="apellido", nullable=false, length=45)
-    private String apellido;
-    
     
     //Faltan las relaciones entre carrera/docente con materia
     @NotEmpty
-    private Carrera carrea;
+    @ManyToOne
+    @JoinColumn(name = "carrera_id")
+    private Carrera carrera;
+
     @NotEmpty
+    @ManyToOne
+    @JoinColumn(name = "docente_id")
     private Docente docente; 
 
   

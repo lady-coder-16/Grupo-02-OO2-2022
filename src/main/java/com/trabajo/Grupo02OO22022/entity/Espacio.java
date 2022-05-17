@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -21,7 +23,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-
 public class Espacio implements Serializable {
 
 	/**
@@ -45,6 +46,8 @@ public class Espacio implements Serializable {
 	@Column(name = "libre", nullable = false)
 	private boolean libre;
 	
+	@ManyToOne
+    @JoinColumn(name = "aula_id")
 	private Aula aula;
 	
 }

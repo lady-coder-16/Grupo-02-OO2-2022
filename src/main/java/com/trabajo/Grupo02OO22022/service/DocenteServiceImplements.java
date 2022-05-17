@@ -19,10 +19,7 @@ public class DocenteServiceImplements implements IDocenteService {
         return (List<Docente>)DocenteRepository.findAll();
     }
 
-    @Override
-    public List<Docente> listarActivos() {   
-        return (List<Docente>)DocenteRepository.findByEnabledTrue();
-    }
+   
 
     @Override
     public void guardar(Docente Docente) {
