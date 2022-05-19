@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Curso;
 import com.trabajo.Grupo02OO22022.repository.CursoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("cursoService")
 @Service
 public class CursoServiceImplements implements ICursoService {
 
@@ -21,13 +23,8 @@ public class CursoServiceImplements implements ICursoService {
     }
 
     @Override
-    public List<Curso> listarTodos() {   
-        return (List<Curso>)CursoRepository.findAll();
-    }
-
-    @Override
-    public void guardar (Curso user) {
-        CursoRepository.save(user);       
+    public void guardar (Curso curso) {
+        CursoRepository.save(curso);       
     }
 
     @Override

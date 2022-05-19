@@ -6,8 +6,7 @@ import com.trabajo.Grupo02OO22022.entity.Aula;
 public interface IAulaService {
 
     public List <Aula> listaAulas();
-    public List <Aula> listarTodos();
-    public void guardar (Aula user);
+    public void guardar (Aula aula);
     public Aula buscarPorID (long id);
 
     

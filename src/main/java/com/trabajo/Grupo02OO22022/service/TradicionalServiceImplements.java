@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Tradicional;
 import com.trabajo.Grupo02OO22022.repository.TradicionalRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("tradicionalService")
 @Service
 public class TradicionalServiceImplements implements ITradicionalService {
 
@@ -21,19 +23,20 @@ public class TradicionalServiceImplements implements ITradicionalService {
     }
 
     @Override
-    public List<Tradicional> listarTodos() {   
-        return (List<Tradicional>)TradicionalRepository.findAll();
-    }
-
-    @Override
-    public void guardar (Tradicional user) {
-        TradicionalRepository.save(user);       
+    public void guardar (Tradicional tradicional) {
+        TradicionalRepository.save(tradicional);       
     }
 
     @Override
     public Tradicional buscarPorID(long id) { 
-        return TradicionalRepository.findById(id).orElse(null);
+        Tradicional tradicional = new Tradicional();
+        Tradicional tradicionalABuscar = TradicionalRepository.findById(id).orElse(null);
+        if(tradicionalABuscar != null){
+            tradicional = tradicionalABuscar;
+        }
+        return tradicional;
     }
+
 
     @Override
     public void eliminar(long id) {

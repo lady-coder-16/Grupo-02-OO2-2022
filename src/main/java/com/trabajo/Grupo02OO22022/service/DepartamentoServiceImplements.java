@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Departamento;
 import com.trabajo.Grupo02OO22022.repository.DepartamentoRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("departamentoService")
 @Service
 public class DepartamentoServiceImplements implements IDepartamentoService {
 
@@ -26,8 +28,8 @@ public class DepartamentoServiceImplements implements IDepartamentoService {
     }
 
     @Override
-    public void guardar (Departamento user) {
-        DepartamentoRepository.save(user);       
+    public void guardar (Departamento departamento) {
+        DepartamentoRepository.save(departamento);       
     }
 
 

@@ -8,8 +8,7 @@ import com.trabajo.Grupo02OO22022.entity.Final;
 public interface IFinalService {
 
     public List <Final> listaFinal();
-    public List <Final> listarTodos();
-    public void guardar (Final user);
+    public void guardar (Final final1);
     public Final buscarPorID (long id);
     public void eliminar (long id);
 

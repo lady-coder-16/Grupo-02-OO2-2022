@@ -2,6 +2,7 @@ package com.trabajo.Grupo02OO22022.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -11,6 +12,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "laboratorio")
+@PrimaryKeyJoinColumn(referencedColumnName = "id")
 @Getter
 @Setter
 @RequiredArgsConstructor

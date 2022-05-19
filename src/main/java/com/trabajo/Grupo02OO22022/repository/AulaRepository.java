@@ -13,4 +13,5 @@ public interface AulaRepository extends CrudRepository<Aula, Long> {
 
     List<Aula> findAll();
  
+    
 }

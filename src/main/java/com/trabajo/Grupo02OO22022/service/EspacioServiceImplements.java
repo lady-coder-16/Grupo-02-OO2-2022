@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Espacio;
 import com.trabajo.Grupo02OO22022.repository.EspacioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("espacioService")
 @Service
 public class EspacioServiceImplements implements IEspacioService {
 
@@ -18,11 +20,6 @@ public class EspacioServiceImplements implements IEspacioService {
     public List<Espacio> listaEspacios() {
         
         return (List<Espacio>) EspacioRepository.findAll();
-    }
-
-    @Override
-    public List<Espacio> listarTodos() {   
-        return (List<Espacio>)EspacioRepository.findAll();
     }
 
     @Override
