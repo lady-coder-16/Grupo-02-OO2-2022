@@ -29,7 +29,7 @@ public class Tradicional extends Aula{
 	
 	@NotEmpty
 	@Column(name = "pizarron", nullable = false)
-	private int pizarron;
+	private String pizarron;
 
 	@NotEmpty
 	@Column(name = "tieneProyector", nullable = false)

@@ -18,8 +18,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "aula")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
 @RequiredArgsConstructor
