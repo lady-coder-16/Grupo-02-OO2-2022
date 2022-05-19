@@ -1,11 +1,11 @@
-use `Grupo-02-BDD-OO2-2022`;
+CREATE DATABASE  IF NOT EXISTS `grupo-02-bdd-oo2-2022` ;
+USE `grupo-02-bdd-oo2-2022`;
 
 INSERT INTO `persona` VALUES (1, 'Leclerc',12345678,'Charles','dni'),(2,'Sainz',23456789,'Carlos','dni');
 
 
 
 INSERT INTO `role` VALUES (1,'ROLE_ADMIN', 1,'ADMIN'),(2,'ROLE_AUDITOR',1,'AUDITOR');
-
 
 
 INSERT INTO `user` VALUES ('charles@gmail.com',1,'$2a$10$lpeTNBUGJfHxsJNOkAF5IuS5eLZUOuL8vlHMd/9O0rL5Cb3rp.uk6', 'admin',1,1);
