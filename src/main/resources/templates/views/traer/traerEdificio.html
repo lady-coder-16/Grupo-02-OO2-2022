@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<htm>
+    <html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="plantilla/template :: head">
+    </head>
+
+
+    <body class="body-buscar">
+
+        <header th:replace="plantilla/template :: header"> </header>
+<br>
+        <h3 style="color: rgb(192, 192, 192);">Edificio:</h3>
+
+
+		<table class="table" id="dataTable" width="100%" cellspacing="0">
+			<thead>
+				<tr class="table-info">
+					<th>Nombre</th>
+					<th>Cant Aulas</th>
+                    <th>Cantidad de bancos</th>
+					
+
+				</tr>
+			</thead>
+			<tbody bgcolor="grey">
+					<td><span th:text="${tradicional.numero}" /></td>
+					<td><span th:text="${tradicional.edificio.edificio}" /></td>
+
+			</tbody>
+			
+			<br>
+		</table>
+
+		<div>
+			<a class="btn btn-primary" th:href="@{/views/traer/buscar}">Volver</a>
+		</div>
+        
+
+
+        <footer th:replace="plantilla/template :: footer"> </footer>
+
+
+    </body>
+
+    </html>

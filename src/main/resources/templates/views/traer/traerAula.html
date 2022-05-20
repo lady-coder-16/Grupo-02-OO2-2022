@@ -9,47 +9,53 @@
     <body class="body-buscar">
 
         <header th:replace="plantilla/template :: header"> </header>
-
-        <h3>Tradicional:</h3>
+<br>
+        <h3 style="color: rgb(192, 192, 192);">Tradicional:</h3>
 
 
 		<table class="table" id="dataTable" width="100%" cellspacing="0">
 			<thead>
 				<tr class="table-info">
-					<th>Numero</th>
+					<th>Nº Aula</th>
 					<th>Edificio</th>
                     <th>Cantidad de bancos</th>
 					<th>Pizarron</th>
+					<th>Proyector</th>
 
 				</tr>
 			</thead>
-			<tbody>
+			<tbody bgcolor="grey">
 					<td><span th:text="${tradicional.numero}" /></td>
 					<td><span th:text="${tradicional.edificio.edificio}" /></td>
 					<td><span th:text="${tradicional.cantBancos}" /></td>
 					<td><span th:text="${tradicional.pizarron}" /></td>
-
+					<td><span th:text="${tradicional.tieneProyector}" /></td>
 
 			</tbody>
+			
+			<br>
 		</table>
 		
-        <h3>Laboratorio</h3>
+        <h3 style="color: rgb(192, 192, 192);">Laboratorio</h3>
 		<table class="table" id="dataTable" width="100%" cellspacing="0">
 			<thead>
 				<tr class="table-info">
-					<th>Numero</th>
+					<th>Nº Aula</th>
 					<th>Edificio</th>
                     <th>Cantidad de PC</th>
 					<th>Cantidad de sillas</th>
+				
+		
 
 				</tr>
 			</thead>
-			<tbody>
+			<tbody bgcolor="grey">
 
 					<td><span th:text="${laboratorio.numero}" /></td>
 					<td><span th:text="${laboratorio.edificio.edificio}" /></td>
 					<td><span th:text="${laboratorio.cantPC}" /></td>
 					<td><span th:text="${laboratorio.cantSillas}" /></td>
+		
 
 
 			</tbody>
