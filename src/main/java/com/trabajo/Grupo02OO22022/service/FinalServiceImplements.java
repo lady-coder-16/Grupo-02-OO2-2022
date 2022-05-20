@@ -7,8 +7,10 @@ import com.trabajo.Grupo02OO22022.repository.FinalRepository;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("finalService")
 @Service
 public class FinalServiceImplements implements IFinalService {
 
@@ -21,14 +23,10 @@ public class FinalServiceImplements implements IFinalService {
         return (List<Final>) FinalRepository.findAll();
     }
 
-    @Override
-    public List<Final> listarTodos() {   
-        return (List<Final>)FinalRepository.findAll();
-    }
 
     @Override
-    public void guardar (Final user) {
-        FinalRepository.save(user);       
+    public void guardar (Final final1) {
+        FinalRepository.save(final1);       
     }
 
     @Override

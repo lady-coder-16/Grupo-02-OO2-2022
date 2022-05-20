@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Docente;
 import com.trabajo.Grupo02OO22022.repository.DocenteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("docenteService")
 @Service
 public class DocenteServiceImplements implements IDocenteService {
 

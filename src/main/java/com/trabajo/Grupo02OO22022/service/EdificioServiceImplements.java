@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Edificio;
 import com.trabajo.Grupo02OO22022.repository.EdificioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("edificioService")
 @Service
 public class EdificioServiceImplements implements IEdificioService {
 

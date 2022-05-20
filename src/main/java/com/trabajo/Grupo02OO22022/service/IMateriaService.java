@@ -6,9 +6,7 @@ import com.trabajo.Grupo02OO22022.entity.Materia;
 public interface IMateriaService {
 
     public List <Materia> listaMaterias();
-    public List <Materia> listarTodos();
-
-    public void guardar (Materia user);
+    public void guardar (Materia materia);
     public Materia buscarPorID (long id);
     public void eliminar (long id);
 

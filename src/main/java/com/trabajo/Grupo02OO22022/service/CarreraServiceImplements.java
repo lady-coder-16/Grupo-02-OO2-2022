@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Carrera;
 import com.trabajo.Grupo02OO22022.repository.CarreraRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("carreraService")
 @Service
 public class CarreraServiceImplements implements ICarreraService {
 
@@ -21,13 +23,8 @@ public class CarreraServiceImplements implements ICarreraService {
     }
 
     @Override
-    public List<Carrera> listarTodos() {   
-        return (List<Carrera>)CarreraRepository.findAll();
-    }
-
-    @Override
-    public void guardar (Carrera user) {
-        CarreraRepository.save(user);       
+    public void guardar (Carrera carrera) {
+        CarreraRepository.save(carrera);       
     }
 
     @Override

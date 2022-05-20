@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Role;
 import com.trabajo.Grupo02OO22022.repository.RoleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("roleService")
 @Service
 public class RoleServiceImplements implements IRoleService {
 
@@ -21,13 +23,8 @@ public class RoleServiceImplements implements IRoleService {
     }
 
     @Override
-    public List<Role> listarTodos() {   
-        return (List<Role>)roleRepository.findAll();
-    }
-
-    @Override
-    public void guardar (Role user) {
-        roleRepository.save(user);       
+    public void guardar (Role role) {
+        roleRepository.save(role);       
     }
 
     @Override

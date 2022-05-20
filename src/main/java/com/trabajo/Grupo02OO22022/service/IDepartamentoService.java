@@ -8,7 +8,7 @@ public interface IDepartamentoService {
 
     public List <Departamento> listarTodos();
     public Departamento buscarPorID (long id);
-    public void guardar (Departamento user);
+    public void guardar (Departamento departamento);
 
 
 }

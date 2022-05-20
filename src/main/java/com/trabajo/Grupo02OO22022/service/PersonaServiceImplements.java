@@ -6,8 +6,10 @@ import com.trabajo.Grupo02OO22022.entity.Persona;
 import com.trabajo.Grupo02OO22022.repository.PersonaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+@Qualifier("personaService")
 @Service
 public class PersonaServiceImplements implements IPersonaService {
 
