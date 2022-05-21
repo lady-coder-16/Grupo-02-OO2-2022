@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `Grupo-02-BDD-OO2-2022` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `Grupo-02-BDD-OO2-2022`;
+CREATE DATABASE  IF NOT EXISTS `grupo-02-bdd-oo2-2022` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `grupo-02-bdd-oo2-2022`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
 -- Host: localhost    Database: grupo-02-bdd-oo2-2022
@@ -23,7 +23,7 @@ USE `Grupo-02-BDD-OO2-2022`;
 
 LOCK TABLES `aula` WRITE;
 /*!40000 ALTER TABLE `aula` DISABLE KEYS */;
-INSERT INTO `aula` VALUES (1,7,1),(2,6,1),(3,19,1),(4,21,1),(5,11,1),(6,1,2),(7,2,2);
+INSERT INTO `aula` VALUES (1,7,1),(2,6,1),(3,19,1),(4,21,1),(5,11,1),(6,1,2),(7,2,2),(8,7,3),(9,10,4),(10,19,2);
 /*!40000 ALTER TABLE `aula` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `edificio` WRITE;
 /*!40000 ALTER TABLE `edificio` DISABLE KEYS */;
-INSERT INTO `edificio` VALUES (1,'José Hernandez'),(2,'Scalabrini');
+INSERT INTO `edificio` VALUES (1,'José Hernandez'),(2,'Scalabrini'),(3,'Ugarte'),(4,'Marechal'),(5,'Manzi'),(6,'Jaureche');
 /*!40000 ALTER TABLE `edificio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `laboratorio` WRITE;
 /*!40000 ALTER TABLE `laboratorio` DISABLE KEYS */;
-INSERT INTO `laboratorio` VALUES (10,70,1),(15,70,2),(10,50,3),(13,55,7);
+INSERT INTO `laboratorio` VALUES (10,70,7),(15,70,8),(10,50,9),(30,30,10);
 /*!40000 ALTER TABLE `laboratorio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `tradicional` WRITE;
 /*!40000 ALTER TABLE `tradicional` DISABLE KEYS */;
-INSERT INTO `tradicional` VALUES (50,'Fibron',1,4),(100,'Fibron',0,5),(150,'Fibron',0,6);
+INSERT INTO `tradicional` VALUES (100,'Tiza',1,1),(50,'Tiza',1,2),(150,'Tiza',1,3),(50,'Fibron',0,4),(100,'Fibron',0,5),(150,'Fibron',0,6);
 /*!40000 ALTER TABLE `tradicional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,4 +172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-19 20:04:53
+-- Dump completed on 2022-05-21  1:48:29
