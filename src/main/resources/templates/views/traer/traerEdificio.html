@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <htm>
-    <html xmlns:th="http://www.thymeleaf.org">
+	<html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:replace="plantilla/template :: head">
-    </head>
-
-
-    <body class="body-buscar">
-
-        <header th:replace="plantilla/template :: header"> </header>
-<br>
-        <h3 style="color: rgb(192, 192, 192);">Edificio:</h3>
+	<head th:replace="plantilla/template :: head">
+	</head>
 
 
-		<table class="table" id="dataTable" width="100%" cellspacing="0">
-			<thead>
-				<tr class="table-info">
-					<th>Nombre</th>
-					<th>Cant Aulas</th>
-                    <th>Cantidad de bancos</th>
-					
+	<body class="body-buscar">
 
-				</tr>
-			</thead>
-			<tbody bgcolor="grey">
-					<td><span th:text="${tradicional.numero}" /></td>
-					<td><span th:text="${tradicional.edificio.edificio}" /></td>
-
-			</tbody>
-			
-			<br>
-		</table>
-
-		<div>
-			<a class="btn btn-primary" th:href="@{/views/traer/buscar}">Volver</a>
-		</div>
-        
+		<header th:replace="plantilla/template :: header"> </header>
+		<br>
 
 
-        <footer th:replace="plantilla/template :: footer"> </footer>
 
 
-    </body>
+		<tr th:each="ed:${edif}">
 
-    </html>
+
+
+			<div class="center">
+
+				<div class="card text-center" style="width: 18rem;">
+					<div class="card-body">
+						<h5 class="card-title" th:text="${ed.edificio}"></h5>
+						<p class="card-text" th:text="${ed.id}" />
+						<p> aca van las aulas </p>
+
+
+						<a href="#" th:value="${idabuscar}" type="submit" class="btn btn-primary" type"">boton piola para mas adelante</a>
+
+					</div>
+				</div>
+				<br>
+
+			</div>
+
+
+
+
+
+
+
+
+			<footer th:replace="plantilla/template :: footer"> </footer>
+
+
+	</body>
+
+	</html>

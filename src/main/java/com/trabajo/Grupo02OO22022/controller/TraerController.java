@@ -3,15 +3,21 @@ package com.trabajo.Grupo02OO22022.controller;
 import com.trabajo.Grupo02OO22022.entity.Edificio;
 import com.trabajo.Grupo02OO22022.entity.Laboratorio;
 import com.trabajo.Grupo02OO22022.entity.Tradicional;
+import com.trabajo.Grupo02OO22022.entity.User;
 import com.trabajo.Grupo02OO22022.helper.ViewRouteHelper;
 import com.trabajo.Grupo02OO22022.service.AulaServiceImplements;
+import com.trabajo.Grupo02OO22022.service.EdificioServiceImplements;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,8 +28,9 @@ public class TraerController {
     @Qualifier("aulaService")
     public AulaServiceImplements aulaService;
     
+
 	@GetMapping("/buscar")
-	public ModelAndView buscarpersona() {
+	public ModelAndView buscarAula() {
 		long idabuscar = 0;
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.BUSCARAULA);
 		mAV.addObject("idabuscar", idabuscar);
@@ -31,8 +38,10 @@ public class TraerController {
 		return mAV;
 
 	}
+	
+	
 	@PostMapping("/aulaxid")
-	public ModelAndView buscarporpersona(long idabuscar) {
+	public ModelAndView aulaEncontrada(long idabuscar) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.RESULTADOAULA);
         Tradicional tradicional = aulaService.buscarPorID(idabuscar);
         Laboratorio laboratorio = aulaService.buscarPorIDLab(idabuscar);
@@ -49,5 +58,7 @@ public class TraerController {
 		return mAV;
 
 	}
+	
+	
 
 }

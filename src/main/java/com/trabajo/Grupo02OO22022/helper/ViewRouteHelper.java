@@ -23,7 +23,7 @@ public class ViewRouteHelper {
     public final static String RESULTADOAULA = "/views/traer/traerAula";
     
     //public final static String BUSCAREDIFICIO = "/views/traer/buscarEdificio";
-    //public final static String RESULTADOEDIFICIO = "/views/traer/traerEdificio";
+    public final static String RESULTADOEDIFICIO = "/views/traer/traerEdificio";
     
   
 }

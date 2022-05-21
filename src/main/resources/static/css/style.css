@@ -29,6 +29,12 @@
     background-size: cover;
 }
 
+.center {
+margin: auto;
+width: 10%;
+
+padding: 10px;
+}
 
 .body-rodado {
 
