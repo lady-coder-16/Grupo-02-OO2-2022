@@ -25,6 +25,12 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class Espacio implements Serializable {
 
+	public Espacio(LocalDate fecha2, char turno2, Aula aula2) {
+		this.fecha = fecha2;
+		this.turno = turno2;
+		this.aula = aula2;
+	}
+
 	/**
 	 * 
 	 */
