@@ -1,7 +1,9 @@
 package com.trabajo.Grupo02OO22022.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.trabajo.Grupo02OO22022.entity.Aula;
 import com.trabajo.Grupo02OO22022.entity.Espacio;
 import com.trabajo.Grupo02OO22022.repository.EspacioRepository;
 
@@ -42,5 +44,16 @@ public class EspacioServiceImplements implements IEspacioService {
         return (List<Espacio>)EspacioRepository.findByLibreTrue();
     }
 
+    @Override
+    public Espacio traerEspacio(LocalDate fecha, char turno, Aula aula) {
+        List<Espacio> espacio = this.listaEspacios();
+        Espacio espacio1 = null;
+        for(Espacio espacio2 : espacio){
+            if(espacio2.getFecha().equals(fecha) && espacio2.getTurno() == turno && espacio2.getAula().getId()==aula.getId()){
+                espacio1 = espacio2;
+            }
+        }
+        return espacio1;
+    }
     
 }

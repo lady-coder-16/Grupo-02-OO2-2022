@@ -14,7 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -23,14 +27,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class Espacio implements Serializable {
 
-	public Espacio(LocalDate fecha2, char turno2, Aula aula2) {
-		this.fecha = fecha2;
-		this.turno = turno2;
-		this.aula = aula2;
-	}
-
+	
 	/**
 	 * 
 	 */
@@ -41,18 +41,23 @@ public class Espacio implements Serializable {
 	private long id;
 	
 	@NotEmpty
+	@NonNull
 	@Column(name = "fecha", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
 	
 	@NotEmpty
+	@NonNull
 	@Column(name = "turno", nullable = false)
 	private char turno;
 	
 	@NotEmpty
+	@NonNull
 	@Column(name = "libre", nullable = false)
 	private boolean libre;
 	
 	@ManyToOne
+	@NonNull
     @JoinColumn(name = "aula_id")
 	private Aula aula;
 	

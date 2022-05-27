@@ -24,6 +24,8 @@ public class ViewRouteHelper {
     
     public final static String EDIFICIOYAULAS = "/views/traer/edificiosAulas";
     public final static String LISTADOEDIFICIO = "/views/traer/edificioslistar";
+    public final static String RESULTADOESPACIO = "/views/traer/traerEspacio";
+    public final static String BUSCARESPACIO = "/views/traer/buscarEspacio";
     
   
 }

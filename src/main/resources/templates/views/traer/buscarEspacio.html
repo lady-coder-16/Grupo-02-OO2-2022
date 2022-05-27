@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<htm>
+    <html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="plantilla/template :: head">
+    </head>
+
+
+    <body class="body-buscar">
+
+
+        <header th:replace="plantilla/template :: header"> </header>
+       
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+               
+
+          
+                <form action="#" th:action="@{/espacio/espacioencontrado}" class="form" id="formBuscar" method="post">
+                    <h3 style="color: rgb(192, 192, 192);" >Buscar por fecha, turno y aula:</h3>
+                        <div class="col-md-6" style="color:white;">
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputespacio">Fecha:</label>
+                                <input class="form-control py-4" id="inputFecha" type="date" th:name="fecha"
+                                th:value="${fecha}" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="color:white;">
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputespacio">Turno:</label>
+                                <input class="form-control py-4" id="inputTurno" type="text" th:name="turno"
+                                th:value="${turno}" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="color:white;">
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputespacio">Aula:</label>
+                                <input class="form-control py-4" id="inputTurno" type="text" th:name="idaula"
+                                th:value="${idaula}" required/>
+                            </div>
+                        </div>
+                       <input class="btn btn-info" type="submit" Value="Buscar" /> 
+                    </form>
+                  
+               
+            
+
+            </div>
+
+        </div>
+
+        <footer th:replace="plantilla/template :: footer"> </footer>
+
+
+
+
+    </body>
+
+    </html>
