@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<htm>
+	<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="plantilla/template :: head">
+	</head>
+
+
+	<body class="body-generic">
+
+
+		<header th:replace="plantilla/template :: header"> </header>
+
+
+		<!--Formulario-->
+		<div class="container">
+			<div class="card bg-light">
+				<div class="card-header bg-dark text-white" th:text=${titulo}></div>
+				<div class="card-body">
+					<form th:action="@{/espacio/save}" th:object="${espacio}" method="post">
+						<div class="form-group row">
+
+							<input type="hidden" th:field="*{id}">
+							<label class="col-md-2" for="fecha">Fecha:</label>
+							<input type="date" th:field="*{fecha}" class="form-control form-control-sm col-md-6"
+								id="fecha" >
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}"
+								th:errors="*{fecha}">
+							</small>
+						</div>
+						
+						<div class="form-group row">
+							
+							<label class="col-md-2" for="tipo_documento">Turno:</label>
+							<select class="form-control form-control-sm col-md-6" th:field="*{turno}" id="turno">
+								<option  value="m">Mañana</option>
+								<option  value="t">Tarde</option>
+							</select>
+					
+						</div>
+						
+						<div class="col-md-6">
+                            <div class="form-group">
+                                <label class="medium mb-1" for="inputFecha">¿Libre?</label>
+                            <br>
+                            <input type="radio" th:field="*{libre}" value="true">Si
+                            <input type="radio" class="librefalse"  th:field="*{libre}" value="false">No			
+                            </div>					
+                        </div>
+						
+						
+
+						<div class="form-group row">
+							<label class="col-md-2" for="role">Aula:</label>
+							<select type="text"  th:field="*{aula}" class="form-control form-control-sm col-md-6"
+								id="nombre">
+
+								<option th:each="a:${listaAula}" th:value="${a.id}" >
+                                    <td><span th:text="${a.numero}" /></td>
+                                    <td><span th:text="${a.edificio.edificio}" /></td>
+								</option>
+
+							</select>
+
+						</div>
+						
+						<div class="card-footer bg-dark">
+							<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+						</div>
+
+
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--/Formulario-->
+
+		<footer th:replace="plantilla/template :: footer"> </footer>
+
+
+	</body>
+
+	</html>
