@@ -30,14 +30,14 @@ import com.trabajo.Grupo02OO22022.service.EspacioServiceImplements;
 @Controller
 @RequestMapping("/espacio")
 public class EspacioController {
-	
+
 	@Autowired
-    @Qualifier("espacioService")
-    public EspacioServiceImplements espacioService;
-    
+	@Qualifier("espacioService")
+	public EspacioServiceImplements espacioService;
+
 	@Autowired
-    @Qualifier("aulaService")
-    public AulaServiceImplements aulaService;
+	@Qualifier("aulaService")
+	public AulaServiceImplements aulaService;
 
 	@GetMapping("/buscarespacio")
 	public ModelAndView buscarEspacio() {
@@ -47,84 +47,87 @@ public class EspacioController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.BUSCARESPACIO);
 		mAV.addObject("fecha", fecha);
 		mAV.addObject("turno", turno);
-		mAV.addObject("idaula",idaula);
+		mAV.addObject("idaula", idaula);
 		return mAV;
 
 	}
-	
-	
+
 	@PostMapping("/espacioencontrado")
 	public ModelAndView espacioEncontrado(String fecha, char turno, long idaula) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.RESULTADOESPACIO);
 		LocalDate fecha1 = LocalDate.parse(fecha);
 		Espacio espacio = new Espacio();
 		Tradicional tradicional = aulaService.buscarPorID(idaula);
-        Laboratorio laboratorio = aulaService.buscarPorIDLab(idaula);
-		if(tradicional.getEdificio() != null){
+		Laboratorio laboratorio = aulaService.buscarPorIDLab(idaula);
+		if (tradicional.getEdificio() != null) {
 			laboratorio.setEdificio(new Edificio());
 			espacio = espacioService.traerEspacio(fecha1, turno, (Aula) tradicional);
-		}else if(laboratorio.getEdificio() != null){
+		} else if (laboratorio.getEdificio() != null) {
 			tradicional.setEdificio(new Edificio());
 			espacio = espacioService.traerEspacio(fecha1, turno, (Aula) laboratorio);
 
 		}
-		mAV.addObject("espacio",espacio);
+		mAV.addObject("espacio", espacio);
+
+		// if (tradicional==null&&laboratorio==null) {
+		// Aca iria el error en caso de que no pudiera encontrar un espacio
+		// }
+
 		return mAV;
 
 	}
 
 	@GetMapping("/agregarespacio")
-    public ModelAndView agragarEspacio(Model model) {
+	public ModelAndView agragarEspacio(Model model) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.AGREGARESPACIO);
 
-        Espacio espacio = new Espacio();
+		Espacio espacio = new Espacio();
 		LocalDate fecha = LocalDate.now();
-        List<Aula> listaAula = aulaService.listaAulas();
-        mAV.addObject("fecha",fecha);
-		mAV.addObject("espacio",espacio);
-        mAV.addObject("listaAula",listaAula);
+		List<Aula> listaAula = aulaService.listaAulas();
+		mAV.addObject("fecha", fecha);
+		mAV.addObject("espacio", espacio);
+		mAV.addObject("listaAula", listaAula);
 		espacio.setFecha(fecha);
-        return mAV;
-    }
+		return mAV;
+	}
 
-
-    @PostMapping("/save")
-    public ModelAndView guardar(@Valid @ModelAttribute Espacio espacio, BindingResult result, Model model,
-            RedirectAttributes attributes) {
+	@PostMapping("/save")
+	public ModelAndView guardar(@Valid @ModelAttribute Espacio espacio, BindingResult result, Model model,
+			RedirectAttributes attributes) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_ESPACIOHOME);
 		LocalDate fecha = LocalDate.now();
-        List<Aula> listaAula = aulaService.listaAulas();
-        Tradicional tradicional = aulaService.buscarPorID(espacio.getAula().getId());
-        Laboratorio laboratorio = aulaService.buscarPorIDLab(espacio.getAula().getId());
-		if(tradicional.getEdificio() != null){
-			if(espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula)tradicional) == null){
+		List<Aula> listaAula = aulaService.listaAulas();
+		Tradicional tradicional = aulaService.buscarPorID(espacio.getAula().getId());
+		Laboratorio laboratorio = aulaService.buscarPorIDLab(espacio.getAula().getId());
+		if (tradicional.getEdificio() != null) {
+			if (espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula) tradicional) == null) {
 				espacioService.guardar(espacio);
-				attributes.addFlashAttribute("success","Espacio guardado con exito");	
-	
-			}else{
-				
-        		mAV.addObject("fecha",fecha);
-				mAV.addObject("espacio",espacio);
-        		mAV.addObject("listaAula",listaAula);
+				attributes.addFlashAttribute("success", "Espacio guardado con exito");
+
+			} else {
+
+				mAV.addObject("fecha", fecha);
+				mAV.addObject("espacio", espacio);
+				mAV.addObject("listaAula", listaAula);
 				espacio.setFecha(fecha);
 				model.addAttribute("error", "Espacio ya existe");
 				mAV.setViewName(ViewRouteHelper.AGREGARESPACIO);
 			}
-		}else if(laboratorio.getEdificio() != null){
-			if(espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula)laboratorio) == null){
+		} else if (laboratorio.getEdificio() != null) {
+			if (espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula) laboratorio) == null) {
 				espacioService.guardar(espacio);
-				attributes.addFlashAttribute("success","Espacio guardado con exito");	
-	
-			}else{
-				mAV.addObject("fecha",fecha);
-				mAV.addObject("espacio",espacio);
-        		mAV.addObject("listaAula",listaAula);
+				attributes.addFlashAttribute("success", "Espacio guardado con exito");
+
+			} else {
+				mAV.addObject("fecha", fecha);
+				mAV.addObject("espacio", espacio);
+				mAV.addObject("listaAula", listaAula);
 				espacio.setFecha(fecha);
 				model.addAttribute("error", "Espacio ya existe");
 				mAV.setViewName(ViewRouteHelper.AGREGARESPACIO);
 			}
 		}
-	   
-        return mAV;
-    }
+
+		return mAV;
 	}
+}
