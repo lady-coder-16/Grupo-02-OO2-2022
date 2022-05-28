@@ -10,8 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +41,7 @@ public class NotaPedido implements Serializable {
 
 	@NotEmpty
 	@Column(name = "fecha", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
 
 	@NotEmpty
@@ -44,19 +49,18 @@ public class NotaPedido implements Serializable {
 	private char turno;
 
 	@NotEmpty
-	@Column(name = "aula", nullable = false)
+	@Column(name = "aula", nullable = false, length = 60)
 	private String aula;
 
 	@NotEmpty
 	@Column(name = "cantEstudiantes", nullable = false)
 	private int cantEstudiantes;
 
-	@NotEmpty
-	@Column(name = "materia", nullable = false)
+	@ManyToOne
+    @JoinColumn(name = "materia_id")
 	private Materia materia;
 
-	@NotEmpty
-	@Column(name = "observaciones", nullable = false, length = 120)
+	@Column(name = "observaciones", length = 120)
 	private String observaciones;
 
 }

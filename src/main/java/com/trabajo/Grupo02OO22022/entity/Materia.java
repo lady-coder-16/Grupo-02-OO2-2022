@@ -2,12 +2,16 @@ package com.trabajo.Grupo02OO22022.entity;
 
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -33,7 +37,7 @@ public class Materia implements Serializable {
     private long id;
 
     @NotEmpty
-    @Column(name="codMateria", nullable=false)
+    @Column(name="codMateria", nullable=false, length = 30)
     private int codMateria;
     
     @NotEmpty
@@ -47,10 +51,12 @@ public class Materia implements Serializable {
     @JoinColumn(name = "carrera_id")
     private Carrera carrera;
 
-    @NotEmpty
-    @ManyToOne
-    @JoinColumn(name = "docente_id")
-    private Docente docente; 
+    @ManyToMany
+	@JoinTable(name="materiaxdocente"
+			, joinColumns=@JoinColumn(name="materiaId")
+			, inverseJoinColumns=@JoinColumn(name="docenteId")
+	)
+    private Set<Docente> docente; 
 
   
 }

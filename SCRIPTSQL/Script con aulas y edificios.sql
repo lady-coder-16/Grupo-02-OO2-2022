@@ -62,7 +62,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `docente` WRITE;
 /*!40000 ALTER TABLE `docente` DISABLE KEYS */;
-INSERT INTO `docente` VALUES (12345,1,1),(12346,2,1),(12347,3,1),(12348,4,1);
+INSERT INTO `docente` VALUES (12345,3),(12346,4),(12347,5),(12348,6);
 /*!40000 ALTER TABLE `docente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,10 +111,20 @@ UNLOCK TABLES;
 
 LOCK TABLES `materia` WRITE;
 /*!40000 ALTER TABLE `materia` DISABLE KEYS */;
-INSERT INTO `materia` VALUES (5,8604,'Matematica 2',1,2),(1,8600,'Programacion de Computadoras',1,1),(2,8601,'Organizacion de Computadoras',1,1),(3,8602,'Arquitectura de computadoras',1,1),(4,8603,'Matematica 1',1,2);
+INSERT INTO `materia` VALUES (5,8604,'Matematica 2 - Plaul',1),(6,86042,'Matematica 2 - Loidi',1),(1,8600,'Programacion de Computadoras',1),(2,8601,'Organizacion de Computadoras',1),(3,8602,'Arquitectura de computadoras',1),(4,8603,'Matematica 1',1);
 /*!40000 ALTER TABLE `materia` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+
+--
+-- Dumping data for table `materiaxdocente`
+--
+LOCK TABLES `materiaxdocente` WRITE;
+/*!40000 ALTER TABLE `materiaxdocente` DISABLE KEYS */;
+INSERT INTO `materiaxdocente` VALUES (5,3),(6,4),(1,5),(2,5),(3,5),(4,6);
+/*!40000 ALTER TABLE `materiaxdocente` ENABLE KEYS */;
+UNLOCK TABLES;
 --
 -- Dumping data for table `nota_pedido`
 --
@@ -130,9 +140,10 @@ UNLOCK TABLES;
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'Leclerc',12345678,'Charles','dni'),(2,'Sainz',23456789,'Carlos','dni');
+INSERT INTO `persona` VALUES (1,'Leclerc',12345678,'Charles','dni'),(2,'Sainz',23456789,'Carlos','dni'),(3,'Plaul',21983746,'Vanesa','dni'),(4,'Loidi',93826155,'Laura','dni'),(5,'Perez',21345678,'Nicolas','dni'),(6,'Siciliano',84756352,'Gustavo','dni');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `role`

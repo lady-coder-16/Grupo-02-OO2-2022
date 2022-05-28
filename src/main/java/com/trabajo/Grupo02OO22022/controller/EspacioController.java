@@ -94,7 +94,7 @@ public class EspacioController {
 	@PostMapping("/save")
 	public ModelAndView guardar(@Valid @ModelAttribute Espacio espacio, BindingResult result, Model model,
 			RedirectAttributes attributes) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_ESPACIOHOME);
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
 		LocalDate fecha = LocalDate.now();
 		List<Aula> listaAula = aulaService.listaAulas();
 		Tradicional tradicional = aulaService.buscarPorID(espacio.getAula().getId());
