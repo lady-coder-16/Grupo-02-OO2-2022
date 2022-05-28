@@ -62,10 +62,10 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="/espacio/buscarespacio" >Buscar espacio</a>
+							<a class="nav-link" href="/espacio/buscarespacio"  sec:authorize="isAuthenticated()" >Buscar espacio</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="/espacio/agregarespacio" >Agregar espacio</a>
+							<a class="nav-link" href="/espacio/agregarespacio"    sec:authorize="isAuthenticated()" >Agregar espacio</a>
 						</li>
 						<div>
 							<div class="dropdown">
@@ -74,7 +74,7 @@
 									aria-expanded="false">
 									Pedir aula
 								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton"  sec:authorize="isAuthenticated()" >
 									<a class="dropdown-item" href="/pedido/pedidoParaFinal">Pedir para final</a>
 									<a class="dropdown-item" href="/pedido/pedidoParaCurso">Pedir para curso</a>
 

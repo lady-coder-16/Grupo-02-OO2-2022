@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -34,6 +35,7 @@ public class EspacioController {
 	@Autowired
 	@Qualifier("espacioService")
 	public EspacioServiceImplements espacioService;
+	
 
 	@Autowired
 	@Qualifier("aulaService")
@@ -48,6 +50,26 @@ public class EspacioController {
 		mAV.addObject("fecha", fecha);
 		mAV.addObject("turno", turno);
 		mAV.addObject("idaula", idaula);
+		
+		List<Tradicional> tradicional = new ArrayList<>();
+		List<Laboratorio> laboratorio = new ArrayList<>();
+		
+
+		for (Aula aula : aulaService.listaAulas()) {
+			if (aula instanceof Tradicional) {
+				tradicional.add((Tradicional) aula);
+			}
+
+			else {
+				laboratorio.add((Laboratorio) aula);
+			}
+
+		}
+
+		mAV.addObject("tradicional", tradicional);
+		mAV.addObject("laboratorio", laboratorio);
+		
+		
 		return mAV;
 
 	}
@@ -88,6 +110,26 @@ public class EspacioController {
 		mAV.addObject("espacio", espacio);
 		mAV.addObject("listaAula", listaAula);
 		espacio.setFecha(fecha);
+		
+		List<Tradicional> tradicional = new ArrayList<>();
+		List<Laboratorio> laboratorio = new ArrayList<>();
+
+		for (Aula aula : listaAula) {
+			if (aula instanceof Tradicional) {
+				tradicional.add((Tradicional) aula);
+			}
+
+			else {
+				laboratorio.add((Laboratorio) aula);
+			}
+
+		}
+
+		mAV.addObject("tradicional", tradicional);
+		mAV.addObject("laboratorio", laboratorio);
+
+		
+		
 		return mAV;
 	}
 
@@ -99,6 +141,27 @@ public class EspacioController {
 		List<Aula> listaAula = aulaService.listaAulas();
 		Tradicional tradicional = aulaService.buscarPorID(espacio.getAula().getId());
 		Laboratorio laboratorio = aulaService.buscarPorIDLab(espacio.getAula().getId());
+		
+		List<Tradicional> tradicionalList = new ArrayList<>();
+		List<Laboratorio> laboratorioList = new ArrayList<>();
+
+		for (Aula aula : listaAula) {
+			if (aula instanceof Tradicional) {
+				tradicionalList.add((Tradicional) aula);
+			}
+
+			else {
+				laboratorioList.add((Laboratorio) aula);
+			}
+
+		}
+
+		mAV.addObject("tradicional", tradicional);
+		mAV.addObject("laboratorio", laboratorio);
+
+		
+		
+		
 		if (tradicional.getEdificio() != null) {
 			if (espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula) tradicional) == null) {
 				espacioService.guardar(espacio);

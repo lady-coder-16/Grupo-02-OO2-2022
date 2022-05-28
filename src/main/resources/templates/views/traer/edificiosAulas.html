@@ -16,6 +16,7 @@
 		<table class="table" id="dataTable" width="100%" cellspacing="0">
 			<thead>
 				<tr class="table-info">
+					<th>Cod Aula </th>
 					<th>Nº Aula</th>
 					<th>Edificio</th>
 					<th>Cantidad de bancos</th>
@@ -26,6 +27,7 @@
 			</thead>
 			<tbody bgcolor="grey">
 				<tr th:each="trad:${tradicional}">
+					<td><span th:text="${trad.id}" /></td>
 					<td><span th:text="${trad.numero}" /></td>
 					<td><span th:text="${trad.edificio.edificio}" /></td>
 					<td><span th:text="${trad.cantBancos}" /></td>
@@ -41,6 +43,7 @@
 		<table class="table" id="dataTable" width="100%" cellspacing="0">
 			<thead>
 				<tr class="table-info">
+					<th>Cod Aula </th>
 					<th>Nº Aula</th>
 					<th>Edificio</th>
 					<th>Cantidad de PC</th>
@@ -52,6 +55,7 @@
 			</thead>
 			<tbody bgcolor="grey">
 				<tr th:each="lab:${laboratorio}">
+					<td><span th:text="${lab.id}" /></td>
 					<td><span th:text="${lab.numero}" /></td>
 					<td><span th:text="${lab.edificio.edificio}" /></td>
 					<td><span th:text="${lab.cantPC}" /></td>
