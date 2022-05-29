@@ -37,7 +37,6 @@ public class EspacioController {
 	@Autowired
 	@Qualifier("espacioService")
 	public EspacioServiceImplements espacioService;
-	
 
 	@Autowired
 	@Qualifier("aulaService")
@@ -52,10 +51,9 @@ public class EspacioController {
 		mAV.addObject("fecha", fecha);
 		mAV.addObject("turno", turno);
 		mAV.addObject("idaula", idaula);
-		
+
 		List<Tradicional> tradicional = new ArrayList<>();
 		List<Laboratorio> laboratorio = new ArrayList<>();
-		
 
 		for (Aula aula : aulaService.listaAulas()) {
 			if (aula instanceof Tradicional) {
@@ -70,15 +68,14 @@ public class EspacioController {
 
 		mAV.addObject("tradicional", tradicional);
 		mAV.addObject("laboratorio", laboratorio);
-		
-		
+
 		return mAV;
 
 	}
 
 	@PostMapping("/espacioencontrado")
-	public ModelAndView espacioEncontrado(String fecha, char turno, long idaula) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.RESULTADOESPACIO);
+	public ModelAndView espacioEncontrado(String fecha, char turno, long idaula, RedirectAttributes attributes) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
 		LocalDate fecha1 = LocalDate.parse(fecha);
 		Espacio espacio = new Espacio();
 		Tradicional tradicional = aulaService.buscarPorID(idaula);
@@ -91,11 +88,21 @@ public class EspacioController {
 			espacio = espacioService.traerEspacio(fecha1, turno, (Aula) laboratorio);
 
 		}
+		
+		
+		
+
+		if(espacio==null) {
+			attributes.addFlashAttribute("error","Espacio no encontrado");
+			mAV.setViewName(ViewRouteHelper.REDIRECT_HOME);
+		} else {
+			mAV.setViewName(ViewRouteHelper.RESULTADOESPACIO);
+
+		}
+		
 		mAV.addObject("espacio", espacio);
 
-		// if (tradicional==null&&laboratorio==null) {
-		// Aca iria el error en caso de que no pudiera encontrar un espacio
-		// }
+
 
 		return mAV;
 
@@ -112,7 +119,7 @@ public class EspacioController {
 		mAV.addObject("espacio", espacio);
 		mAV.addObject("listaAula", listaAula);
 		espacio.setFecha(fecha);
-		
+
 		List<Tradicional> tradicional = new ArrayList<>();
 		List<Laboratorio> laboratorio = new ArrayList<>();
 
@@ -130,8 +137,6 @@ public class EspacioController {
 		mAV.addObject("tradicional", tradicional);
 		mAV.addObject("laboratorio", laboratorio);
 
-		
-		
 		return mAV;
 	}
 
@@ -143,7 +148,7 @@ public class EspacioController {
 		List<Aula> listaAula = aulaService.listaAulas();
 		Tradicional tradicional = aulaService.buscarPorID(espacio.getAula().getId());
 		Laboratorio laboratorio = aulaService.buscarPorIDLab(espacio.getAula().getId());
-		
+
 		List<Tradicional> tradicionalList = new ArrayList<>();
 		List<Laboratorio> laboratorioList = new ArrayList<>();
 
@@ -161,9 +166,6 @@ public class EspacioController {
 		mAV.addObject("tradicional", tradicional);
 		mAV.addObject("laboratorio", laboratorio);
 
-		
-		
-		
 		if (tradicional.getEdificio() != null) {
 			if (espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula) tradicional) == null) {
 				espacioService.guardar(espacio);
@@ -175,8 +177,9 @@ public class EspacioController {
 				mAV.addObject("espacio", espacio);
 				mAV.addObject("listaAula", listaAula);
 				espacio.setFecha(fecha);
-				model.addAttribute("error", "Espacio ya existe");
-				mAV.setViewName(ViewRouteHelper.AGREGARESPACIO);
+				attributes.addFlashAttribute("error","Espacio ya existe");
+				mAV.setViewName(ViewRouteHelper.REDIRECT_HOME);
+				
 			}
 		} else if (laboratorio.getEdificio() != null) {
 			if (espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula) laboratorio) == null) {
@@ -188,33 +191,29 @@ public class EspacioController {
 				mAV.addObject("espacio", espacio);
 				mAV.addObject("listaAula", listaAula);
 				espacio.setFecha(fecha);
-				model.addAttribute("error", "Espacio ya existe");
-				mAV.setViewName(ViewRouteHelper.AGREGARESPACIO);
+				attributes.addFlashAttribute("error", "Espacio ya existe");
+				mAV.setViewName(ViewRouteHelper.REDIRECT_HOME);
 			}
 		}
 
 		return mAV;
 	}
-	
-	
-	 @Secured("ROLE_ADMIN")
+
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/{id}")
-	public ModelAndView editarLibre(@PathVariable ("id") Long idEspacio, Model model,  RedirectAttributes attribute) {
-		
+	public ModelAndView editarLibre(@PathVariable("id") Long idEspacio, Model model, RedirectAttributes attribute) {
+
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
-		
+
 		Espacio espacio = espacioService.buscarPorID(idEspacio);
-		//setea en Libre, lo opuesto a lo que ya tenga 
+		// setea en Libre, lo opuesto a lo que ya tenga
 		espacio.setLibre(!espacio.isLibre());
-		
+
 		espacioService.guardar(espacio);
 
-        attribute.addFlashAttribute("success", "Editado con Exito");
-		
+		attribute.addFlashAttribute("success", "Editado con Exito");
+
 		return mAV;
 	}
 
-
-	
-	
 }

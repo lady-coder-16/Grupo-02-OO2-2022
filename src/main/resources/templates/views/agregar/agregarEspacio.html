@@ -32,6 +32,8 @@
 						<div class="form-group row">
 
 							<label class="col-md-2" for="tipo_documento">Turno:</label>
+							
+							
 							<select class="form-control form-control-sm col-md-6" th:field="*{turno}" id="turno">
 								<option value="m">Mañana</option>
 								<option value="t">Tarde</option>
@@ -56,8 +58,13 @@
 								id="nombre">
 
 								<option th:each="a:${listaAula}" th:value="${a.id}">
-									<td><span th:text="${a.numero}" /></td>
+									<td><span >| Cod Aula: </td>
+									<td><span th:text="${a.id}"> </td>
+										<td><span > | </td>
 									<td><span th:text="${a.edificio.edificio}" /></td>
+									<td><span >- Aula nº </td>
+									<td><span th:text="${a.numero}" /></td>
+									
 								</option>
 
 							</select>

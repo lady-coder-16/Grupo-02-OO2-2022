@@ -19,6 +19,7 @@ public class ViewRouteHelper {
     public final static String REDIRECT_CLIENTE = "redirect:/views/users/";
     public final static String REDIRECT_ROLE = "redirect:/views/roles/";
     public final static String REDIRECT_HOME = "redirect:/home";
+    public final static String REDIRECT_AGREGARESPACIO = "redirect:/views/agregarespacio";
 
     public final static String BUSCARAULA = "/views/traer/buscarAula";
     public final static String RESULTADOAULA = "/views/traer/traerAula";
