@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/views/traer")
@@ -41,19 +42,27 @@ public class TraerController {
 	
 	
 	@PostMapping("/aulaxid")
-	public ModelAndView aulaEncontrada(long idabuscar) {
+	public ModelAndView aulaEncontrada(long idabuscar,RedirectAttributes attributes) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.RESULTADOAULA);
         Tradicional tradicional = aulaService.buscarPorID(idabuscar);
         Laboratorio laboratorio = aulaService.buscarPorIDLab(idabuscar);
-		if(tradicional.getEdificio() != null){
+		if(laboratorio == null && tradicional == null){
+			attributes.addFlashAttribute("error","Aula no encontrada");
+			mAV.setViewName(ViewRouteHelper.REDIRECT_HOME);
+		}
+
+		if(tradicional != null){
+			laboratorio = new Laboratorio();
 			laboratorio.setEdificio(new Edificio());
-		}else if(laboratorio.getEdificio() != null){
+
+		}else if(laboratorio!=null){
+			tradicional = new Tradicional();
 			tradicional.setEdificio(new Edificio());
 
 		}
-		
 		mAV.addObject("tradicional", tradicional);
-        mAV.addObject("laboratorio", laboratorio);
+		mAV.addObject("laboratorio", laboratorio);
+
 
 		return mAV;
 

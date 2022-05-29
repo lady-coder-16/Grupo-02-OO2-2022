@@ -40,7 +40,7 @@ public class AulaServiceImplements implements IAulaService {
     @Override
     public Tradicional buscarPorID(long id) { 
             List<Tradicional> tradicional  = tradicionalRepository.findAll();
-            Tradicional tradicional1 = new Tradicional();
+            Tradicional tradicional1 = null;
             for(Tradicional tradicional2 : tradicional) {
                 if(tradicional2.getId()==id) {
                     tradicional1 = tradicional2;
@@ -52,7 +52,7 @@ public class AulaServiceImplements implements IAulaService {
     @Override
     public Laboratorio buscarPorIDLab(long id) { 
             List<Laboratorio> laboratorio  = laboratorioRepository.findAll();
-            Laboratorio laboratorio1 = new Laboratorio();
+            Laboratorio laboratorio1 = null;
             for(Laboratorio laboratorio2 : laboratorio) {
                 if(laboratorio2.getId()==id) {
                     laboratorio1 = laboratorio2;

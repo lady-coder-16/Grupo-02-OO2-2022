@@ -77,14 +77,12 @@ public class EspacioController {
 	public ModelAndView espacioEncontrado(String fecha, char turno, long idaula, RedirectAttributes attributes) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
 		LocalDate fecha1 = LocalDate.parse(fecha);
-		Espacio espacio = new Espacio();
+		Espacio espacio = null;
 		Tradicional tradicional = aulaService.buscarPorID(idaula);
 		Laboratorio laboratorio = aulaService.buscarPorIDLab(idaula);
-		if (tradicional.getEdificio() != null) {
-			laboratorio.setEdificio(new Edificio());
+		if (tradicional != null) {
 			espacio = espacioService.traerEspacio(fecha1, turno, (Aula) tradicional);
-		} else if (laboratorio.getEdificio() != null) {
-			tradicional.setEdificio(new Edificio());
+		} else {
 			espacio = espacioService.traerEspacio(fecha1, turno, (Aula) laboratorio);
 
 		}
