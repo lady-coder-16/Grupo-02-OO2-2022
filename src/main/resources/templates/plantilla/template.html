@@ -74,12 +74,12 @@
 							<div class="dropdown">
 								<button class="btn btn-secondary dropdown-toggle" type="button"
 									id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false" sec:authorize="isAuthenticated()" >
+									aria-expanded="false" sec:authorize="isAuthenticated() and hasRole('ROLE_CARRERA') or hasRole('ROLE_DEPARTAMENTO') ">
 									Gestion de espacios
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
 									<a class="dropdown-item" href="/espacio/buscarespacio" sec:authorize="isAuthenticated()">Buscar espacio</a>
-									<a class="dropdown-item" href="/espacio/agregarespacio" sec:authorize="isAuthenticated()" >Agregar espacio</a>
+									<a class="dropdown-item" href="/espacio/agregarespacio" sec:authorize="isAuthenticated() and hasRole('ROLE_DEPARTAMENTO')" >Agregar espacio</a>
 
 								</div>
 							</div>
