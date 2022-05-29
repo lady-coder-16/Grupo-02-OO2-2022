@@ -1,6 +1,7 @@
 package com.trabajo.Grupo02OO22022.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -112,4 +113,23 @@ public class PedidoController {
 
         return mAV;
     }
-}
+
+    @GetMapping("/listaPedidos")
+	public ModelAndView listarPedidos() {
+        
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDOSLISTAR);
+
+
+		List<Final> final1 = pedidoService.getAll();
+		List<Curso> curso = pedidoService.getAll1();
+
+		
+
+		mAV.addObject("final1", final1);
+		mAV.addObject("curso", curso);
+
+		return mAV;
+
+	}
+    }
+
