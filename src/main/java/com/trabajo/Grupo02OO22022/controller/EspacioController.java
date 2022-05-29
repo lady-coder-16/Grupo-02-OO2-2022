@@ -2,11 +2,13 @@ package com.trabajo.Grupo02OO22022.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
@@ -193,4 +195,26 @@ public class EspacioController {
 
 		return mAV;
 	}
+	
+	
+	 @Secured("ROLE_ADMIN")
+	@GetMapping("/{id}")
+	public ModelAndView editarLibre(@PathVariable ("id") Long idEspacio, Model model,  RedirectAttributes attribute) {
+		
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
+		
+		Espacio espacio = espacioService.buscarPorID(idEspacio);
+		//setea en Libre, lo opuesto a lo que ya tenga 
+		espacio.setLibre(!espacio.isLibre());
+		
+		espacioService.guardar(espacio);
+
+        attribute.addFlashAttribute("success", "Editado con Exito");
+		
+		return mAV;
+	}
+
+
+	
+	
 }

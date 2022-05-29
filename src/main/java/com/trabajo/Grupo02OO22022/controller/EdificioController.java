@@ -44,7 +44,7 @@ public class EdificioController {
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView editar(@PathVariable("id") Long idEdificio, Model model, RedirectAttributes attributes) {
+	public ModelAndView listarEdificiosYaulas(@PathVariable("id") Long idEdificio, Model model, RedirectAttributes attributes) {
 
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EDIFICIOYAULAS);
 
