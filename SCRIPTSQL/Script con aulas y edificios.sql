@@ -140,7 +140,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'Leclerc',12345678,'Charles','dni'),(2,'Sainz',23456789,'Carlos','dni'),(3,'Plaul',21983746,'Vanesa','dni'),(4,'Loidi',93826155,'Laura','dni'),(5,'Perez',21345678,'Nicolas','dni'),(6,'Siciliano',84756352,'Gustavo','dni');
+INSERT INTO `persona` VALUES (1,'Leclerc',12345678,'Charles','dni'),(2,'Sainz',23456789,'Carlos','dni'),(3,'Plaul',21983746,'Vanesa','dni'),(4,'Loidi',93826155,'Laura','dni'),(5,'Perez',21345678,'Nicolas','dni'),(6,'Siciliano',84756352,'Gustavo','dni'),(7,'Herrera',92846573,'Juan Manuel','dni'),(8,'Velez',48273658,'Matias','dni');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +151,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'ROLE_ADMIN',1,'ADMIN'),(2,'ROLE_AUDITOR',1,'AUDITOR');
+INSERT INTO `role` VALUES (1,'ROLE_ADMIN',1,'ADMIN'),(2,'ROLE_AUDITOR',1,'AUDITOR'),(3,'ROLE_CARRERA',1,'CARRERA'),(4,'ROLE_DEPARTAMENTO',1,'DEPARTAMENTO');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('charles@gmail.com',1,'$2a$10$lpeTNBUGJfHxsJNOkAF5IuS5eLZUOuL8vlHMd/9O0rL5Cb3rp.uk6','admin',1,1),('carlos@gmail.com',1,'$2a$10$B9mfALrCwl7gNgksyajanuqhq2GpRAfcfTPN9iXrAAGN6BKB73hUy','auditor',2,2);
+INSERT INTO `user` VALUES ('charles@gmail.com',1,'$2a$10$lpeTNBUGJfHxsJNOkAF5IuS5eLZUOuL8vlHMd/9O0rL5Cb3rp.uk6','admin',1,1),('carlos@gmail.com',1,'$2a$10$B9mfALrCwl7gNgksyajanuqhq2GpRAfcfTPN9iXrAAGN6BKB73hUy','auditor',2,2),('juanmanuel@gmail.com',1,'$2a$10$yw2LV11xsITgp0V1a.2acOLFBao8Tn0e5AKfhnlgLWyOAQzh7y3Y6','carrera',7,3),('matiasv@gmail.com',1,'$2a$10$rZ2B8HLlUH.pTY5pt32VBuRz/QZ/i.NG8CqsDEtj7M9Ww.ZdOOs46','departamento',8,4);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
