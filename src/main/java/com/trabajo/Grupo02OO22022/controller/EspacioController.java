@@ -288,7 +288,7 @@ public class EspacioController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
 		
 		long idaula = espacio.getAula().getId();
-		int anio  = espacio.getFecha().getDayOfMonth();
+		int anio  = espacio.getFecha().getYear();
 		int mes = espacio.getFecha().getMonthValue();
 		char turno = espacio.getTurno();
 		
