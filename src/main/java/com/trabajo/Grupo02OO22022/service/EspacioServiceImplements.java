@@ -68,22 +68,21 @@ public class EspacioServiceImplements implements IEspacioService {
 
 		for (int i = 0; i < largoMes; i++) {
 			if (fechaN.getDayOfMonth() == 1 && i == 0) {
-				
-				if(traerEspacio(fechaN, turno, aula) == null){
+
+				if (traerEspacio(fechaN, turno, aula) == null) {
 					Espacio espacio = new Espacio(fechaN, turno, true, aula);
 					guardar(espacio);
 				}
-				
-		
+
 			} else {
-				
-				if(traerEspacio(fechaN, turno, aula) == null){
-					fechaN = fechaN.plusDays(1);
+				fechaN = fechaN.plusDays(1);
+
+				if (traerEspacio(fechaN, turno, aula) == null) {
+
 					Espacio espacio = new Espacio(fechaN, turno, true, aula);
 					guardar(espacio);
 				}
-				
-			
+
 			}
 
 		}
