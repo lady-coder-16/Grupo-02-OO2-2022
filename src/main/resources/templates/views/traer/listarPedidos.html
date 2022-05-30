@@ -25,6 +25,7 @@
                     <th>Observaciones</th>
                     <th>Fecha de examen</th>
 					<th sec:authorize= "hasRole('ROLE_DEPARTAMENTO')"  >AsignarEspacio:</th>
+					<th sec:authorize= "hasRole('ROLE_CARRERA')"  >Espacio Asignado:</th>
 
                     
 				</tr>
@@ -40,7 +41,7 @@
 					<td><span th:text="${final.observaciones}" /></td>
 					<td><span th:text="${final.fechaExamen}" /></td>
                     <td sec:authorize= "hasRole('ROLE_DEPARTAMENTO')" ><a class="btn btn-success btn-sm" th:href="@{/espacio/buscarespacio}"  sec:authorize= "hasRole('ROLE_DEPARTAMENTO')"  role="button">Asignar</a></td>
-
+					<td sec:authorize= "hasRole('ROLE_CARRERA')" ><span th:text="${final.espacio.aula.numero} +${final.espacio.aula.edificio.edificio}" /></td>
                 </tr>
 			</tbody>
 
@@ -61,7 +62,7 @@
                     <th>Carrera</th>
                     <th>Proyector?</th>
 					<th sec:authorize= "hasRole('ROLE_DEPARTAMENTO')"  >AsignarEspacio:</th>
-
+					<th sec:authorize= "hasRole('ROLE_CARRERA')"  >Espacio Asignado:</th>
 
 
 				</tr>
@@ -78,6 +79,7 @@
 					<td><span th:text="${curso1.carrera}" /></td>
                     <td><span th:text="${curso1.proyector} ? 'SI' : 'NO'" /></td>
                     <td sec:authorize= "hasRole('ROLE_DEPARTAMENTO')" ><a class="btn btn-success btn-sm" th:href="@{/espacio/buscarespacio}"  sec:authorize= "hasRole('ROLE_DEPARTAMENTO')"  role="button">Asignar</a></td>
+					<td sec:authorize= "hasRole('ROLE_CARRERA')" ><span th:text="${curso1.espacio.aula.numero} +${curso1.espacio.aula.edificio.edificio}" /></td>
 
                 </tr>
 

@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.trabajo.Grupo02OO22022.entity.Aula;
 import com.trabajo.Grupo02OO22022.entity.Curso;
+import com.trabajo.Grupo02OO22022.entity.Edificio;
+import com.trabajo.Grupo02OO22022.entity.Espacio;
 import com.trabajo.Grupo02OO22022.entity.Final;
 import com.trabajo.Grupo02OO22022.entity.Materia;
 import com.trabajo.Grupo02OO22022.entity.NotaPedido;
@@ -122,9 +125,30 @@ public class PedidoController {
 
 		List<Final> final1 = pedidoService.getAll();
 		List<Curso> curso = pedidoService.getAll1();
-
-		
-
+        List<Final> final3 = new ArrayList<>();
+		List<Curso> curso3 = new ArrayList<>();
+        for(Final final2 : final1){
+            if(final2.getEspacio() == null){
+                final2.setEspacio(new Espacio());
+                final2.getEspacio().setAula(new Aula());
+                final2.getEspacio().getAula().setEdificio(new Edificio());
+                final3.add(final2);
+            }else{
+                final3.add(final2);
+            }
+        }
+        for(Curso curso2 : curso){
+            if(curso2.getEspacio() == null){
+                curso2.setEspacio(new Espacio());
+                curso2.getEspacio().setAula(new Aula());
+                curso2.getEspacio().getAula().setEdificio(new Edificio());
+                curso3.add(curso2);
+            }else{
+                curso3.add(curso2);
+            }
+        }
+        
+        
 		mAV.addObject("final1", final1);
 		mAV.addObject("curso", curso);
 

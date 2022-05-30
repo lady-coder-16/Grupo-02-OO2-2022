@@ -31,7 +31,10 @@ public class NotaPedidoServiceImplements implements INotaPedidoService {
 	}
 
 	
-
+	@Override
+    public void guardar (NotaPedido notaPedido) {
+        notaRepository.save(notaPedido);       
+    }
 	
 	@Override
 	public List<Final> getAll() {
@@ -63,7 +66,29 @@ public class NotaPedidoServiceImplements implements INotaPedidoService {
 		
 	}
 
-
+	@Override
+    public Final buscarPorID(long id) { 
+            List<Final> final1  = finalRepository.findAll();
+            Final final2 = null;
+            for(Final final3 : final1) {
+                if(final3.getId()==id) {
+                    final2 = final3;
+                }
+            }
+            return final2;
+    }
+   
+    @Override
+    public Curso buscarPorIDCurso(long id) { 
+            List<Curso> curso  = cursoRepository.findAll();
+            Curso curso1 = new Curso();
+            for(Curso curso2 : curso) {
+                if(curso2.getId()==id) {
+                    curso1 = curso2;
+                }
+            }
+            return curso1;
+    }
 
 
    

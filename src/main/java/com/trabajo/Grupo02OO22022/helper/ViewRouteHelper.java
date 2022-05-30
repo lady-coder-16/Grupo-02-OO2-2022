@@ -29,7 +29,8 @@ public class ViewRouteHelper {
     public final static String RESULTADOESPACIO = "/views/traer/traerEspacio";
     public final static String BUSCARESPACIO = "/views/traer/buscarEspacio";
     public final static String AGREGARESPACIO = "/views/agregar/agregarEspacio";
-  
+    public final static String ASIGNARESPACIOPEDIDO = "/views/traer/asignarEspacioPedido";
+
     public final static String PEDIRAULAFINAL = "/views/agregar/pedidoParaFinal";
     public final static String PEDIRAULACURSO = "/views/agregar/pedidoParaCurso";
 

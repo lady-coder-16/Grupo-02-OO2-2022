@@ -13,8 +13,11 @@ public interface INotaPedidoService {
     public List <Curso> getAll1();
     public Final insertOrUpdate(Final final1);
     public Curso insertOrUpdateCurso(Curso curso);
-
+    public void guardar(NotaPedido notaPedido);
     public void eliminar (long id);
+    
+    public Final buscarPorID(long id);
+    public Curso buscarPorIDCurso(long id);
 
     
 }

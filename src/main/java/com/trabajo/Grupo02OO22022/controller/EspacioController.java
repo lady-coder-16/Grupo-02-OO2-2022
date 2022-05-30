@@ -22,13 +22,17 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.trabajo.Grupo02OO22022.entity.Aula;
+import com.trabajo.Grupo02OO22022.entity.Curso;
 import com.trabajo.Grupo02OO22022.entity.Edificio;
 import com.trabajo.Grupo02OO22022.entity.Espacio;
+import com.trabajo.Grupo02OO22022.entity.Final;
 import com.trabajo.Grupo02OO22022.entity.Laboratorio;
+import com.trabajo.Grupo02OO22022.entity.NotaPedido;
 import com.trabajo.Grupo02OO22022.entity.Tradicional;
 import com.trabajo.Grupo02OO22022.helper.ViewRouteHelper;
 import com.trabajo.Grupo02OO22022.service.AulaServiceImplements;
 import com.trabajo.Grupo02OO22022.service.EspacioServiceImplements;
+import com.trabajo.Grupo02OO22022.service.NotaPedidoServiceImplements;
 
 @Controller
 @RequestMapping("/espacio")
@@ -41,6 +45,10 @@ public class EspacioController {
 	@Autowired
 	@Qualifier("aulaService")
 	public AulaServiceImplements aulaService;
+
+	@Autowired
+	@Qualifier("notaPedidoService")
+	public NotaPedidoServiceImplements pedidoService;
 
 	@GetMapping("/buscarespacio")
 	public ModelAndView buscarEspacio() {
@@ -197,20 +205,44 @@ public class EspacioController {
 		return mAV;
 	}
 
-	@Secured("ROLE_ADMIN")
 	@GetMapping("/{id}")
-	public ModelAndView editarLibre(@PathVariable("id") Long idEspacio, Model model, RedirectAttributes attribute) {
+	public ModelAndView asignarEspacio(@PathVariable("id") Long idEspacio, Model model, RedirectAttributes attribute) {
+
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.ASIGNARESPACIOPEDIDO);
+		long idPedido = 0;
+		List<NotaPedido> notaPedido = pedidoService.listarTodos();
+
+		mAV.addObject("notaPedido",notaPedido);
+		mAV.addObject("idPedido",idPedido);
+		mAV.addObject("idEspacio",idEspacio);
+
+
+		return mAV;
+	}
+	
+	@PostMapping("/asignado/{id}")
+	public ModelAndView espacioAsignado(@PathVariable("id") Long idEspacio, Long idPedido, Model model, RedirectAttributes attribute){
+		
 
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
-
 		Espacio espacio = espacioService.buscarPorID(idEspacio);
+		Final final1 = pedidoService.buscarPorID(idPedido);
+		Curso curso = pedidoService.buscarPorIDCurso(idPedido);
+		if(final1 != null){
+			final1.setEspacio(espacio);
+			final1.getEspacio().setAula(espacio.getAula());
+			final1.getEspacio().getAula().setEdificio(espacio.getAula().getEdificio());
+			pedidoService.insertOrUpdate(final1);
+		}else{
+			curso.setEspacio(espacio);
+			curso.getEspacio().setAula(espacio.getAula());
+			curso.getEspacio().getAula().setEdificio(espacio.getAula().getEdificio());
+			pedidoService.insertOrUpdateCurso(curso);
+		}
 		// setea en Libre, lo opuesto a lo que ya tenga
 		espacio.setLibre(!espacio.isLibre());
-
 		espacioService.guardar(espacio);
-
 		attribute.addFlashAttribute("success", "Editado con Exito");
-
 		return mAV;
 	}
 

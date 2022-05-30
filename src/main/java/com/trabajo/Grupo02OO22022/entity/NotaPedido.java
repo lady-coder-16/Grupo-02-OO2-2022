@@ -12,6 +12,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -63,4 +64,7 @@ public class NotaPedido implements Serializable {
 	@Column(name = "observaciones", length = 120)
 	private String observaciones;
 
+	@OneToOne
+    @JoinColumn(name = "espacio_id")
+	private Espacio espacio;
 }

@@ -94,7 +94,7 @@
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
 									<a class="dropdown-item" href="/pedido/pedidoParaFinal" sec:authorize= "hasRole('ROLE_CARRERA')">Pedir para final</a>
 									<a class="dropdown-item" href="/pedido/pedidoParaCurso" sec:authorize= "hasRole('ROLE_CARRERA')">Pedir para curso</a>
-									<a class="dropdown-item" href="/pedido/listaPedidos" sec:authorize= "hasRole('ROLE_DEPARTAMENTO')">Lista de pedidos</a>
+									<a class="dropdown-item" href="/pedido/listaPedidos" sec:authorize= "hasRole('ROLE_DEPARTAMENTO') or hasRole('ROLE_CARRERA')">Lista de pedidos</a>
 
 								</div>
 							</div>
