@@ -245,5 +245,80 @@ public class EspacioController {
 		attribute.addFlashAttribute("success", "Editado con Exito");
 		return mAV;
 	}
+	
+	
+	
+	
+	@GetMapping("/agregarespaciomes")
+	public ModelAndView agregarEspaciomes(Model model) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.AGREGARESPACIOMES);
+		Espacio espacio = new Espacio();
+		LocalDate fecha = LocalDate.now();
+		List<Aula> listaAula = aulaService.listaAulas();
+		mAV.addObject("fecha", fecha);
+		mAV.addObject("espacio", espacio);
+		mAV.addObject("listaAula", listaAula);
+		espacio.setFecha(fecha);
+
+		List<Tradicional> tradicional = new ArrayList<>();
+		List<Laboratorio> laboratorio = new ArrayList<>();
+
+		for (Aula aula : listaAula) {
+			if (aula instanceof Tradicional) {
+				tradicional.add((Tradicional) aula);
+			}
+
+			else {
+				laboratorio.add((Laboratorio) aula);
+			}
+
+		}
+
+		mAV.addObject("tradicional", tradicional);
+		mAV.addObject("laboratorio", laboratorio);
+
+		return mAV;
+	}
+	
+	
+	//Agrega un Espacio para todo el mes y año designado 
+	@PostMapping("/guardarmes")
+	public ModelAndView agregarEspacioMes( @Valid @ModelAttribute Espacio espacio, BindingResult result, Model model,
+			RedirectAttributes attribute){
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
+		
+		long idaula = espacio.getAula().getId();
+		int anio  = espacio.getFecha().getDayOfMonth();
+		int mes = espacio.getFecha().getMonthValue();
+		char turno = espacio.getTurno();
+		
+		
+	
+		
+		List<Aula> listaAula = aulaService.listaAulas();
+
+		for (Aula aula : listaAula) {
+			
+			if (aula.getId()==idaula) {
+				
+				if (aula instanceof Tradicional) {
+					espacioService.agregarEspacioMes(mes, anio, turno, aula);
+				}
+
+				else {
+					espacioService.agregarEspacioMes(mes, anio, turno, aula);
+
+				}
+				
+				
+			}
+		
+
+		}
+		attribute.addFlashAttribute("success", "Espacios agregados con Exito");
+
+		return mAV;
+	}
+	
 
 }

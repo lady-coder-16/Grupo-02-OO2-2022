@@ -20,7 +20,7 @@ public class ViewRouteHelper {
     public final static String REDIRECT_ROLE = "redirect:/views/roles/";
     public final static String REDIRECT_HOME = "redirect:/home";
     public final static String REDIRECT_AGREGARESPACIO = "redirect:/views/agregarespacio";
-
+    
     public final static String BUSCARAULA = "/views/traer/buscarAula";
     public final static String RESULTADOAULA = "/views/traer/traerAula";
     
@@ -29,6 +29,10 @@ public class ViewRouteHelper {
     public final static String RESULTADOESPACIO = "/views/traer/traerEspacio";
     public final static String BUSCARESPACIO = "/views/traer/buscarEspacio";
     public final static String AGREGARESPACIO = "/views/agregar/agregarEspacio";
+    //-----Aylu-----
+    public final static String AGREGARESPACIOMES = "/views/agregar/agregarEspacioMes";
+    //---------------
+
     public final static String ASIGNARESPACIOPEDIDO = "/views/traer/asignarEspacioPedido";
 
     public final static String PEDIRAULAFINAL = "/views/agregar/pedidoParaFinal";
