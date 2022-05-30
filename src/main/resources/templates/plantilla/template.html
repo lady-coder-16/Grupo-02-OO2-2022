@@ -74,13 +74,13 @@
 							<div class="dropdown">
 								<button class="btn btn-secondary dropdown-toggle" type="button"
 									id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false" sec:authorize="isAuthenticated() and hasRole('ROLE_CARRERA') or hasRole('ROLE_DEPARTAMENTO') ">
+									aria-expanded="false" sec:authorize="isAuthenticated() and hasRole('ROLE_ASISTENTE') or hasRole('ROLE_ADMIN_GENERAL') ">
 									Gestion de espacios
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
 									<a class="dropdown-item" href="/espacio/buscarespacio" sec:authorize="isAuthenticated()">Buscar espacio</a>
-									<a class="dropdown-item" href="/espacio/agregarespacio" sec:authorize="isAuthenticated() and hasRole('ROLE_DEPARTAMENTO')" >Agregar espacio</a>
-									<a class="dropdown-item" href="/espacio/agregarespaciomes" sec:authorize="isAuthenticated() and hasRole('ROLE_DEPARTAMENTO')" >Agregar espacio Mensual</a>
+									<a class="dropdown-item" href="/espacio/agregarespacio" sec:authorize="isAuthenticated() and hasRole('ROLE_ADMIN_GENERAL')" >Agregar espacio</a>
+									<a class="dropdown-item" href="/espacio/agregarespaciomes" sec:authorize="isAuthenticated() and hasRole('ROLE_ADMIN_GENERAL')" >Agregar espacio Mensual</a>
 
 								</div>
 							</div>
@@ -89,13 +89,13 @@
 							<div class="dropdown">
 								<button class="btn btn-secondary dropdown-toggle" type="button"
 									id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false" sec:authorize="isAuthenticated() and hasRole('ROLE_CARRERA') or hasRole('ROLE_DEPARTAMENTO') " >
+									aria-expanded="false" sec:authorize="isAuthenticated() and hasRole('ROLE_ASISTENTE') or hasRole('ROLE_ADMIN_GENERAL') " >
 									Gestion de pedidos
 								</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-									<a class="dropdown-item" href="/pedido/pedidoParaFinal" sec:authorize= "hasRole('ROLE_CARRERA')">Pedir para final</a>
-									<a class="dropdown-item" href="/pedido/pedidoParaCurso" sec:authorize= "hasRole('ROLE_CARRERA')">Pedir para curso</a>
-									<a class="dropdown-item" href="/pedido/listaPedidos" sec:authorize= "hasRole('ROLE_DEPARTAMENTO') or hasRole('ROLE_CARRERA')">Lista de pedidos</a>
+									<a class="dropdown-item" href="/pedido/pedidoParaFinal" sec:authorize= "hasRole('ROLE_ASISTENTE')">Pedir para final</a>
+									<a class="dropdown-item" href="/pedido/pedidoParaCurso" sec:authorize= "hasRole('ROLE_ASISTENTE')">Pedir para curso</a>
+									<a class="dropdown-item" href="/pedido/listaPedidos" sec:authorize= "hasRole('ROLE_ADMIN_GENERAL') or hasRole('ROLE_ASISTENTE')">Lista de pedidos</a>
 
 								</div>
 							</div>

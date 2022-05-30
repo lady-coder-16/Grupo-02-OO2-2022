@@ -18,6 +18,22 @@ USE `grupo-02-bdd-oo2-2022`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `aula`
+--
+
+DROP TABLE IF EXISTS `aula`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aula` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `numero` int NOT NULL,
+  `edificio_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK1dktox2l21denb9gugmps5mxi` (`edificio_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `aula`
 --
 
@@ -26,6 +42,22 @@ LOCK TABLES `aula` WRITE;
 INSERT INTO `aula` VALUES (1,7,1),(2,6,1),(3,19,1),(4,21,1),(5,11,1),(6,1,2),(7,2,2),(8,7,3),(9,10,4),(10,19,2);
 /*!40000 ALTER TABLE `aula` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `carrera`
+--
+
+DROP TABLE IF EXISTS `carrera`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `carrera` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `carrera` varchar(60) NOT NULL,
+  `departamento_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKlxfyjkntg9sy77n7m4m0p0lbe` (`departamento_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `carrera`
@@ -38,6 +70,21 @@ INSERT INTO `carrera` VALUES (1,'Sistemas',1),(2,'Ferroviarias',1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `curso`
+--
+
+DROP TABLE IF EXISTS `curso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `curso` (
+  `cod_curso` varchar(60) NOT NULL,
+  `proyector` bit(1) NOT NULL,
+  `id` bigint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `curso`
 --
 
@@ -45,6 +92,20 @@ LOCK TABLES `curso` WRITE;
 /*!40000 ALTER TABLE `curso` DISABLE KEYS */;
 /*!40000 ALTER TABLE `curso` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `departamento`
+--
+
+DROP TABLE IF EXISTS `departamento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `departamento` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `departamento` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `departamento`
@@ -57,6 +118,20 @@ INSERT INTO `departamento` VALUES (1,'Desarrollo Productivo'),(2,'Humanidaes y a
 UNLOCK TABLES;
 
 --
+-- Table structure for table `docente`
+--
+
+DROP TABLE IF EXISTS `docente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `docente` (
+  `nro_legajo` int DEFAULT NULL,
+  `id` bigint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `docente`
 --
 
@@ -65,6 +140,20 @@ LOCK TABLES `docente` WRITE;
 INSERT INTO `docente` VALUES (12345,3),(12346,4),(12347,5),(12348,6);
 /*!40000 ALTER TABLE `docente` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `edificio`
+--
+
+DROP TABLE IF EXISTS `edificio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `edificio` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `edificio` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `edificio`
@@ -77,14 +166,46 @@ INSERT INTO `edificio` VALUES (1,'José Hernandez'),(2,'Scalabrini'),(3,'Ugarte'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `espacio`
+--
+
+DROP TABLE IF EXISTS `espacio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `espacio` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `libre` bit(1) NOT NULL,
+  `turno` char(1) NOT NULL,
+  `aula_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKm96cg51w2du489b2lf8nchx89` (`aula_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=716 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `espacio`
 --
 
 LOCK TABLES `espacio` WRITE;
 /*!40000 ALTER TABLE `espacio` DISABLE KEYS */;
-INSERT INTO `espacio`VALUES(1,'2022-05-25',0,'m',1),(2,'2022-05-26',1,'t',1),(3,'2022-05-26',1,'m',7);
+INSERT INTO `espacio` VALUES (715,'0030-08-31',_binary '','m',1),(714,'0030-08-30',_binary '','m',1),(713,'0030-08-29',_binary '','m',1),(712,'0030-08-28',_binary '','m',1),(711,'0030-08-27',_binary '','m',1),(710,'0030-08-26',_binary '','m',1),(709,'0030-08-25',_binary '','m',1),(708,'0030-08-24',_binary '','m',1),(707,'0030-08-23',_binary '','m',1),(706,'0030-08-22',_binary '','m',1),(705,'0030-08-21',_binary '','m',1),(704,'0030-08-20',_binary '','m',1),(703,'0030-08-19',_binary '','m',1),(702,'0030-08-18',_binary '','m',1),(701,'0030-08-17',_binary '','m',1),(700,'0030-08-16',_binary '','m',1),(699,'0030-08-15',_binary '','m',1),(698,'0030-08-14',_binary '','m',1),(697,'0030-08-13',_binary '','m',1),(696,'0030-08-12',_binary '','m',1),(695,'0030-08-11',_binary '','m',1),(694,'0030-08-10',_binary '','m',1),(693,'0030-08-09',_binary '','m',1),(692,'0030-08-08',_binary '','m',1),(691,'0030-08-07',_binary '','m',1),(690,'0030-08-06',_binary '','m',1),(689,'0030-08-05',_binary '','m',1),(688,'0030-08-04',_binary '','m',1),(687,'0030-08-03',_binary '','m',1),(686,'0030-08-02',_binary '','m',1),(685,'0030-08-01',_binary '','m',1),(684,'0030-07-31',_binary '','t',10),(683,'0030-07-30',_binary '','t',10),(682,'0030-07-29',_binary '','t',10),(681,'0030-07-28',_binary '','t',10),(680,'0030-07-27',_binary '','t',10),(679,'0030-07-26',_binary '','t',10),(678,'0030-07-25',_binary '','t',10),(677,'0030-07-24',_binary '','t',10),(676,'0030-07-23',_binary '','t',10),(675,'0030-07-22',_binary '','t',10),(674,'0030-07-21',_binary '','t',10),(673,'0030-07-20',_binary '','t',10),(672,'0030-07-19',_binary '','t',10),(671,'0030-07-18',_binary '','t',10),(670,'0030-07-17',_binary '','t',10),(669,'0030-07-16',_binary '','t',10),(668,'0030-07-15',_binary '','t',10),(667,'0030-07-14',_binary '','t',10),(666,'0030-07-13',_binary '','t',10),(665,'0030-07-12',_binary '','t',10),(664,'0030-07-11',_binary '','t',10),(663,'0030-07-10',_binary '','t',10),(662,'0030-07-09',_binary '','t',10),(661,'0030-07-08',_binary '','t',10),(660,'0030-07-07',_binary '','t',10),(659,'0030-07-06',_binary '','t',10),(658,'0030-07-05',_binary '','t',10),(657,'0030-07-04',_binary '','t',10),(656,'0030-07-03',_binary '','t',10),(655,'0030-07-02',_binary '','t',10),(654,'0030-07-01',_binary '','t',10),(653,'0001-06-30',_binary '','m',1),(652,'0001-06-29',_binary '','m',1),(651,'0001-06-28',_binary '','m',1),(650,'0001-06-27',_binary '','m',1),(649,'0001-06-26',_binary '','m',1),(648,'0001-06-25',_binary '','m',1),(647,'0001-06-24',_binary '','m',1),(646,'0001-06-23',_binary '','m',1),(645,'0001-06-22',_binary '','m',1),(644,'0001-06-21',_binary '','m',1),(643,'0001-06-20',_binary '','m',1),(642,'0001-06-19',_binary '','m',1),(641,'0001-06-18',_binary '','m',1),(640,'0001-06-17',_binary '','m',1),(639,'0001-06-16',_binary '','m',1),(638,'0001-06-15',_binary '','m',1),(637,'0001-06-14',_binary '','m',1),(636,'0001-06-13',_binary '','m',1),(635,'0001-06-12',_binary '','m',1),(634,'0001-06-11',_binary '','m',1),(633,'0001-06-10',_binary '','m',1),(632,'0001-06-09',_binary '','m',1),(631,'0001-06-08',_binary '','m',1),(630,'0001-06-07',_binary '','m',1),(629,'0001-06-06',_binary '','m',1),(628,'0001-06-05',_binary '','m',1),(627,'0001-06-04',_binary '','m',1),(626,'0001-06-03',_binary '','m',1),(625,'0001-06-02',_binary '','m',1),(624,'0001-06-01',_binary '','m',1);
 /*!40000 ALTER TABLE `espacio` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `final`
+--
+
+DROP TABLE IF EXISTS `final`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `final` (
+  `fecha_examen` date NOT NULL,
+  `id` bigint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `final`
@@ -94,6 +215,21 @@ LOCK TABLES `final` WRITE;
 /*!40000 ALTER TABLE `final` DISABLE KEYS */;
 /*!40000 ALTER TABLE `final` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `laboratorio`
+--
+
+DROP TABLE IF EXISTS `laboratorio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `laboratorio` (
+  `cantpc` int NOT NULL,
+  `cant_sillas` int NOT NULL,
+  `id` bigint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `laboratorio`
@@ -106,6 +242,23 @@ INSERT INTO `laboratorio` VALUES (10,70,7),(15,70,8),(10,50,9),(30,30,10);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `materia`
+--
+
+DROP TABLE IF EXISTS `materia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `materia` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `cod_materia` int NOT NULL,
+  `materia` varchar(45) NOT NULL,
+  `carrera_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKgo5fa3d1ofx15gh7px1y3du3e` (`carrera_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `materia`
 --
 
@@ -115,16 +268,53 @@ INSERT INTO `materia` VALUES (5,8604,'Matematica 2 - Plaul',1),(6,86042,'Matemat
 /*!40000 ALTER TABLE `materia` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `materiaxdocente`
+--
 
+DROP TABLE IF EXISTS `materiaxdocente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `materiaxdocente` (
+  `materia_id` bigint NOT NULL,
+  `docente_id` bigint NOT NULL,
+  PRIMARY KEY (`materia_id`,`docente_id`),
+  KEY `FKccp19cfea65g9s5isbts1nvj4` (`docente_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `materiaxdocente`
 --
+
 LOCK TABLES `materiaxdocente` WRITE;
 /*!40000 ALTER TABLE `materiaxdocente` DISABLE KEYS */;
-INSERT INTO `materiaxdocente` VALUES (5,3),(6,4),(1,5),(2,5),(3,5),(4,6);
+INSERT INTO `materiaxdocente` VALUES (1,5),(2,5),(3,5),(4,6),(5,3),(6,4);
 /*!40000 ALTER TABLE `materiaxdocente` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `nota_pedido`
+--
+
+DROP TABLE IF EXISTS `nota_pedido`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `nota_pedido` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `aula` varchar(60) NOT NULL,
+  `cant_estudiantes` int NOT NULL,
+  `fecha` date NOT NULL,
+  `observaciones` varchar(120) DEFAULT NULL,
+  `turno` char(1) NOT NULL,
+  `espacio_id` bigint DEFAULT NULL,
+  `materia_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKhgk1v1a9nlybbqqlssjdytcng` (`espacio_id`),
+  KEY `FKd5qj0dabmq3kjfqvy5app8mf3` (`materia_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- Dumping data for table `nota_pedido`
 --
@@ -135,15 +325,48 @@ LOCK TABLES `nota_pedido` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `persona`
+--
+
+DROP TABLE IF EXISTS `persona`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `persona` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `apellido` varchar(45) NOT NULL,
+  `dni` bigint NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `tipo_documento` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_hlwyecu2r9wagqayhej1kt5wy` (`dni`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `persona`
 --
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (1,'Leclerc',12345678,'Charles','dni'),(2,'Sainz',23456789,'Carlos','dni'),(3,'Plaul',21983746,'Vanesa','dni'),(4,'Loidi',93826155,'Laura','dni'),(5,'Perez',21345678,'Nicolas','dni'),(6,'Siciliano',84756352,'Gustavo','dni'),(7,'Herrera',92846573,'Juan Manuel','dni'),(8,'Velez',48273658,'Matias','dni');
+INSERT INTO `persona` VALUES (1,'Leclerc',12345678,'Charles','dni'),(2,'Sainz',23456789,'Carlos','dni'),(3,'Plaul',21983746,'Vanesa','dni'),(4,'Loidi',93826155,'Laura','dni'),(5,'Perez',21345678,'Nicolas','dni'),(6,'Siciliano',84756352,'Gustavo','dni'),(7,'Herrera',92846573,'Juan Manuel','DNI'),(8,'Velez',48273658,'Matias','DNI');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `role` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `nombre` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `role`
@@ -151,9 +374,25 @@ UNLOCK TABLES;
 
 LOCK TABLES `role` WRITE;
 /*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'ROLE_ADMIN',1,'ADMIN'),(2,'ROLE_AUDITOR',1,'AUDITOR'),(3,'ROLE_CARRERA',1,'CARRERA'),(4,'ROLE_DEPARTAMENTO',1,'DEPARTAMENTO');
+INSERT INTO `role` VALUES (1,'ROLE_ADMIN',1,'ADMIN'),(2,'ROLE_AUDITOR',1,'AUDITOR'),(3,'ROLE_ASISTENTE',1,'ASISTENTE'),(4,'ROLE_ADMIN_GENERAL',1,'ADMIN_GENERAL');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tradicional`
+--
+
+DROP TABLE IF EXISTS `tradicional`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tradicional` (
+  `cant_bancos` int NOT NULL,
+  `pizarron` varchar(255) NOT NULL,
+  `tiene_proyector` int NOT NULL,
+  `id` bigint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tradicional`
@@ -166,12 +405,31 @@ INSERT INTO `tradicional` VALUES (100,'Tiza',1,1),(50,'Tiza',1,2),(150,'Tiza',1,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `email` varchar(255) DEFAULT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `id` bigint NOT NULL,
+  `role_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKn82ha3ccdebhokx3a8fgdqeyy` (`role_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `user`
 --
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('charles@gmail.com',1,'$2a$10$lpeTNBUGJfHxsJNOkAF5IuS5eLZUOuL8vlHMd/9O0rL5Cb3rp.uk6','admin',1,1),('carlos@gmail.com',1,'$2a$10$B9mfALrCwl7gNgksyajanuqhq2GpRAfcfTPN9iXrAAGN6BKB73hUy','auditor',2,2),('juanmanuel@gmail.com',1,'$2a$10$yw2LV11xsITgp0V1a.2acOLFBao8Tn0e5AKfhnlgLWyOAQzh7y3Y6','carrera',7,3),('matiasv@gmail.com',1,'$2a$10$rZ2B8HLlUH.pTY5pt32VBuRz/QZ/i.NG8CqsDEtj7M9Ww.ZdOOs46','departamento',8,4);
+INSERT INTO `user` VALUES ('charles@gmail.com',1,'$2a$10$lpeTNBUGJfHxsJNOkAF5IuS5eLZUOuL8vlHMd/9O0rL5Cb3rp.uk6','admin',1,1),('carlos@gmail.com',1,'$2a$10$B9mfALrCwl7gNgksyajanuqhq2GpRAfcfTPN9iXrAAGN6BKB73hUy','auditor',2,2),('juanmanuel@gmail.com',1,'$2a$10$Yrh.4JtqoR78MTMo3i6Ome8/gsRcNHQ6gWOf37Zfu4GKgYJIwrd7m','Asistente',7,3),('matiasv@gmail.com',1,'$2a$10$H8tUMxXs1FOkEAguTbW8su3weDJcaqo1mcUrDUPlhFi2ZW/t21HrW','admingeneral',8,4);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -184,4 +442,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-21  1:48:29
+-- Dump completed on 2022-05-30 18:40:22
