@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -154,6 +155,26 @@ public class PedidoController {
 
 		return mAV;
 
+	}
+
+	@GetMapping("/delete/{id}")
+    public String eliminar(@PathVariable("id") Long idPedido, RedirectAttributes attribute) {
+
+		Final final1 = null;
+		
+		if (idPedido > 0) {
+            final1 = pedidoService.buscarPorID(idPedido);
+        }
+        if (final1 == null) {
+            attribute.addFlashAttribute("error","*ERROR* el pedido solicitado no existe");
+            return ViewRouteHelper.REDIRECT_PEDIDO;
+        }
+		
+
+        pedidoService.eliminar(idPedido);
+		attribute.addFlashAttribute("warning", "Pedido eliminado con Exito!");
+
+		return ViewRouteHelper.REDIRECT_PEDIDO;
 	}
     }
 

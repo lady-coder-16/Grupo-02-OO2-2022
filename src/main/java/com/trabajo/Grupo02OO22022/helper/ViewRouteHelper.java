@@ -39,6 +39,7 @@ public class ViewRouteHelper {
     public final static String PEDIRAULACURSO = "/views/agregar/pedidoParaCurso";
 
     public final static String PEDIDOSLISTAR = "/views/traer/listarPedidos";
+    public final static String REDIRECT_PEDIDO = "redirect:/pedido/listaPedidos";
 
 
 }
