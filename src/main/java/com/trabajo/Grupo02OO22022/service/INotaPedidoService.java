@@ -20,7 +20,9 @@ public interface INotaPedidoService {
 
     public void guardar(NotaPedido notaPedido);
 
-    public void eliminar(long id);
+    public void eliminarFinal(long id);
+
+    public void eliminarCurso(long id);
 
     public Final buscarPorID(long id);
 

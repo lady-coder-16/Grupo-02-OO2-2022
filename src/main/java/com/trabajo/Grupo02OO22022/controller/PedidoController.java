@@ -157,23 +157,54 @@ public class PedidoController {
 
     }
 
-    @Secured("ROLE_ADMIN_GENERAL")
-    @GetMapping("/delete/{id}")
-    public String eliminar(@PathVariable("id") Long idPedido, RedirectAttributes attribute) {
+    @Secured({"ROLE_ADMIN_GENERAL","ROLE_ASISTENTE"})
+    @GetMapping("/deleteFinal/{id}")
+    public String eliminarFinal(@PathVariable("id") Long idPedido, RedirectAttributes attribute) {
 
         Final final1 = null;
-
         if (idPedido > 0) {
             final1 = pedidoService.buscarPorID(idPedido);
-        }
-        if (final1 == null) {
+            if (final1 == null) {
+                attribute.addFlashAttribute("error", "*ERROR* el pedido solicitado no existe");
+                return ViewRouteHelper.REDIRECT_PEDIDO;
+            }else{
+                pedidoService.eliminarFinal(idPedido);
+
+            }
+        }else{
             attribute.addFlashAttribute("error", "*ERROR* el pedido solicitado no existe");
             return ViewRouteHelper.REDIRECT_PEDIDO;
-        }
 
-        pedidoService.eliminar(idPedido);
+        }
+        
+       
+        attribute.addFlashAttribute("warning", "Pedido eliminado con Exito!");
+
+        return ViewRouteHelper.REDIRECT_PEDIDO;
+    }
+
+    @Secured({"ROLE_ADMIN_GENERAL","ROLE_ASISTENTE"})
+    @GetMapping("/deleteCurso/{id}")
+    public String eliminarCurso(@PathVariable("id") Long idPedido, RedirectAttributes attribute){
+        Curso curso1 = null;
+        if (idPedido > 0) {
+            curso1 = pedidoService.buscarPorIDCurso(idPedido);
+            if (curso1 == null) {
+                System.out.println("hola");
+                attribute.addFlashAttribute("error", "*ERROR* el pedido solicitado no existe");
+                return ViewRouteHelper.REDIRECT_PEDIDO;
+            }else{
+                pedidoService.eliminarCurso(idPedido);
+            }
+        }else{
+            attribute.addFlashAttribute("error", "*ERROR* el pedido solicitado no existe");
+            return ViewRouteHelper.REDIRECT_PEDIDO;
+
+        }
+       
         attribute.addFlashAttribute("warning", "Pedido eliminado con Exito!");
 
         return ViewRouteHelper.REDIRECT_PEDIDO;
     }
 }
+

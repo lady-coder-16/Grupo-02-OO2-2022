@@ -58,11 +58,16 @@ public class NotaPedidoServiceImplements implements INotaPedidoService {
     }
 
     @Override
-    public void eliminar(long id) {
-        notaRepository.deleteById(id);
+    public void eliminarCurso(long id) {
+        cursoRepository.deleteById(id);
 
     }
 
+    @Override
+    public void eliminarFinal(long id) {
+        finalRepository.deleteById(id);
+
+    }
     @Override
     public Final buscarPorID(long id) {
         List<Final> final1 = finalRepository.findAll();

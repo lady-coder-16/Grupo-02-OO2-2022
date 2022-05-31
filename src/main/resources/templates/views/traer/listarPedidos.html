@@ -50,7 +50,7 @@
 							onclick="javascript:alert(this.getAttribute('data-thing'));">Ver espacio</span>
 					</td>
 
-					<td><a class="btn btn-danger" th:href="@{/pedido/delete/}+${final.id}" role="button"
+					<td><a class="btn btn-danger" th:href="@{/pedido/deleteFinal/}+${final.id}" role="button"
 							onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
 				</tr>
 			</tbody>
@@ -98,7 +98,7 @@
 							onclick="javascript:alert(this.getAttribute('data-thing'));">Ver espacio</span>
 					</td>
 
-					<td><a class="btn btn-danger" th:href="@{/pedido/delete/}+${curso1.id}" role="button"
+					<td><a class="btn btn-danger" th:href="@{/pedido/deleteCurso/}+${curso1.id}" role="button"
 							onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
 				</tr>
 
