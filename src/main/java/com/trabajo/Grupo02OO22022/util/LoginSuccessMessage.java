@@ -19,12 +19,12 @@ public class LoginSuccessMessage extends SimpleUrlAuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
 
-                SessionFlashMapManager fManager = new SessionFlashMapManager();
-                FlashMap fMap = new FlashMap();
+        SessionFlashMapManager fManager = new SessionFlashMapManager();
+        FlashMap fMap = new FlashMap();
 
-                fMap.put("success", "Ha iniciado sesion con exito");
-                fManager.saveOutputFlashMap(fMap, request, response);
-        
+        fMap.put("success", "Ha iniciado sesion con exito");
+        fManager.saveOutputFlashMap(fMap, request, response);
+
         super.onAuthenticationSuccess(request, response, authentication);
     }
 

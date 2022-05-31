@@ -29,18 +29,15 @@ public class Edificio implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotEmpty
 	@Column(name = "edificio", nullable = false)
 	private String edificio;
-	
-	
-	//El set si que no se como codearlo para la bd
+
+	// El set si que no se como codearlo para la bd
 	@NotEmpty
 	@Column(name = "aulas", nullable = false)
-	@OneToMany(mappedBy = "edificio")  
+	@OneToMany(mappedBy = "edificio")
 	private Set<Aula> aulas;
-	
-	
-	
+
 }

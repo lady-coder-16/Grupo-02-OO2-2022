@@ -10,7 +10,6 @@ import com.trabajo.Grupo02OO22022.helper.ViewRouteHelper;
 import com.trabajo.Grupo02OO22022.service.IRoleService;
 import com.trabajo.Grupo02OO22022.service.IUserService;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,10 +34,10 @@ public class UserController {
     @Autowired
     private BCryptPasswordEncoder passEncoder;
 
-    //@Autowired
-    //private IPersonaService personaService;
+    // @Autowired
+    // private IPersonaService personaService;
 
-    @Secured({"ROLE_ADMIN","ROLE_AUDITOR"})
+    @Secured({ "ROLE_ADMIN", "ROLE_AUDITOR" })
     @GetMapping("/")
     public String listarUsers(Model model) {
         List<User> listadoUsers = userService.listarActivos();
@@ -68,22 +67,22 @@ public class UserController {
 
         List<Role> listRoles = roleService.listarActivos();
         if (result.hasErrors()) {
-            
+
             model.addAttribute("titulo", "Formulario: Nuevo User");
             model.addAttribute("user", user);
             model.addAttribute("role", listRoles);
-            
+
             return ViewRouteHelper.CREAR;
         }
-    // HAY UN ERROR ACÁ, no deja modificar el usuario a menos que modifiques el dni
-     //   if (personaService.buscarPorDni(user.getDni()) != null){
-     //       attributes.addFlashAttribute("error","User ya existente");
-     //       return ViewRouteHelper.REDIRECT_CLIENTE;
-     //   }
+        // HAY UN ERROR ACÁ, no deja modificar el usuario a menos que modifiques el dni
+        // if (personaService.buscarPorDni(user.getDni()) != null){
+        // attributes.addFlashAttribute("error","User ya existente");
+        // return ViewRouteHelper.REDIRECT_CLIENTE;
+        // }
         user.setEnabled(true);
         user.setPassword(passEncoder.encode(user.getPassword()));
         userService.guardar(user);
-        attributes.addFlashAttribute("success","User guardado con exito");
+        attributes.addFlashAttribute("success", "User guardado con exito");
 
         return ViewRouteHelper.REDIRECT_CLIENTE;
     }
@@ -97,7 +96,7 @@ public class UserController {
             user = userService.buscarPorID(idUser);
         }
         if (user == null) {
-            attributes.addFlashAttribute("error","*ERROR* el User solicitado no existe");
+            attributes.addFlashAttribute("error", "*ERROR* el User solicitado no existe");
             return ViewRouteHelper.REDIRECT_CLIENTE;
         }
 
@@ -106,31 +105,29 @@ public class UserController {
         model.addAttribute("titulo", "Formulario: Editar User");
         model.addAttribute("user", user);
         model.addAttribute("role", listRoles);
-       return ViewRouteHelper.CREAR;
+        return ViewRouteHelper.CREAR;
     }
 
     @Secured("ROLE_ADMIN")
-	@GetMapping("/delete/{id}")
-	public String eliminar(@PathVariable("id") Long idUser, RedirectAttributes attribute) {
+    @GetMapping("/delete/{id}")
+    public String eliminar(@PathVariable("id") Long idUser, RedirectAttributes attribute) {
 
-		User user = null;
-		
-		if (idUser > 0) {
+        User user = null;
+
+        if (idUser > 0) {
             user = userService.buscarPorID(idUser);
         }
         if (user == null) {
-            attribute.addFlashAttribute("error","*ERROR* el User solicitado no existe");
+            attribute.addFlashAttribute("error", "*ERROR* el User solicitado no existe");
             return ViewRouteHelper.REDIRECT_CLIENTE;
         }
-		
+
         user.setEnabled(false);
-		userService.guardar(user);
-		attribute.addFlashAttribute("warning", "Registro Eliminado con Exito!");
+        userService.guardar(user);
+        attribute.addFlashAttribute("warning", "Registro Eliminado con Exito!");
 
-		return ViewRouteHelper.REDIRECT_CLIENTE;
-	}
-
-
+        return ViewRouteHelper.REDIRECT_CLIENTE;
+    }
 
     // ********************* ABM User ******************** */
 

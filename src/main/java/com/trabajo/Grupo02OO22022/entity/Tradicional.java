@@ -16,17 +16,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Tradicional extends Aula{
-	
+public class Tradicional extends Aula {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@NotEmpty
 	@Column(name = "cantBancos", nullable = false)
 	private int cantBancos;
-	
+
 	@NotEmpty
 	@Column(name = "pizarron", nullable = false)
 	private String pizarron;
@@ -34,6 +34,5 @@ public class Tradicional extends Aula{
 	@NotEmpty
 	@Column(name = "tieneProyector", nullable = false)
 	private int tieneProyector;
-
 
 }

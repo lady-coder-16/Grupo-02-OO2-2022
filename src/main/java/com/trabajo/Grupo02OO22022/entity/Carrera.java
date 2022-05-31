@@ -20,7 +20,7 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 
-public class Carrera  implements Serializable {
+public class Carrera implements Serializable {
 
 	/**
 	 * 
@@ -30,17 +30,14 @@ public class Carrera  implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotEmpty
-	@ManyToOne 
-    @JoinColumn(name = "departamento_id")
-	private Departamento departamento; 
+	@ManyToOne
+	@JoinColumn(name = "departamento_id")
+	private Departamento departamento;
 
 	@NotEmpty
 	@Column(name = "carrera", nullable = false, length = 60)
 	private String carrera;
-	
 
-	
-	
 }

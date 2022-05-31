@@ -10,7 +10,6 @@ import com.trabajo.Grupo02OO22022.helper.ViewRouteHelper;
 import com.trabajo.Grupo02OO22022.service.IRoleService;
 import com.trabajo.Grupo02OO22022.service.IUserService;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -32,7 +31,7 @@ public class RoleController {
     @Autowired
     private IRoleService roleService;
 
-    @Secured({"ROLE_ADMIN","ROLE_AUDITOR"})
+    @Secured({ "ROLE_ADMIN", "ROLE_AUDITOR" })
     @GetMapping("/")
     public String listarRoles(Model model) {
         List<Role> listadoRoles = roleService.listarActivos();
@@ -72,7 +71,7 @@ public class RoleController {
         role.setDescripcion("ROLE_" + role.getDescripcion().toUpperCase());
         role.setEnabled(true);
         roleService.guardar(role);
-        attributes.addFlashAttribute("success","Role guardado con exito");
+        attributes.addFlashAttribute("success", "Role guardado con exito");
 
         return ViewRouteHelper.REDIRECT_ROLE;
     }
@@ -87,9 +86,9 @@ public class RoleController {
             role.setDescripcion(role.getDescripcion().split("ROLE_")[1]);
         }
         if (role == null) {
-            attributes.addFlashAttribute("error","*ERROR* el Rol solicitado no existe");
-            
-            //cambiar view
+            attributes.addFlashAttribute("error", "*ERROR* el Rol solicitado no existe");
+
+            // cambiar view
             return ViewRouteHelper.REDIRECT_ROLE;
         }
 
@@ -98,34 +97,31 @@ public class RoleController {
         model.addAttribute("titulo", "Formulario: Editar Rol");
         model.addAttribute("role", role);
         model.addAttribute("user", listUser);
-      
-        //cambiar view
+
+        // cambiar view
         return ViewRouteHelper.CREAR_ROLES;
     }
 
     @Secured("ROLE_ADMIN")
-	@GetMapping("/delete/{id}")
-	public String eliminar(@PathVariable("id") Long idRole, RedirectAttributes attribute) {
+    @GetMapping("/delete/{id}")
+    public String eliminar(@PathVariable("id") Long idRole, RedirectAttributes attribute) {
 
-		Role role = null;
-		
-		if (idRole > 0) {
+        Role role = null;
+
+        if (idRole > 0) {
             role = roleService.buscarPorID(idRole);
         }
         if (role == null) {
-            attribute.addFlashAttribute("error","*ERROR* el rol solicitado no existe");
+            attribute.addFlashAttribute("error", "*ERROR* el rol solicitado no existe");
             return ViewRouteHelper.REDIRECT_ROLE;
         }
-		
 
         role.setEnabled(false);
         roleService.guardar(role);
-		attribute.addFlashAttribute("warning", "Registro Eliminado con Exito!");
+        attribute.addFlashAttribute("warning", "Registro Eliminado con Exito!");
 
-		return ViewRouteHelper.REDIRECT_ROLE;
-	}
-
-
+        return ViewRouteHelper.REDIRECT_ROLE;
+    }
 
     // ********************* ABM User ******************** */
 

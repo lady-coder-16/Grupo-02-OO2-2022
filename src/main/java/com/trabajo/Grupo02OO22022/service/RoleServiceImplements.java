@@ -18,17 +18,17 @@ public class RoleServiceImplements implements IRoleService {
 
     @Override
     public List<Role> listaRoles() {
-        
+
         return (List<Role>) roleRepository.findAll();
     }
 
     @Override
-    public void guardar (Role role) {
-        roleRepository.save(role);       
+    public void guardar(Role role) {
+        roleRepository.save(role);
     }
 
     @Override
-    public Role buscarPorID(long id) { 
+    public Role buscarPorID(long id) {
         return roleRepository.findById(id).orElse(null);
     }
 
@@ -39,8 +39,7 @@ public class RoleServiceImplements implements IRoleService {
 
     @Override
     public List<Role> listarActivos() {
-        return (List<Role>)roleRepository.findByEnabledTrue();
+        return (List<Role>) roleRepository.findByEnabledTrue();
     }
 
-    
 }

@@ -21,30 +21,25 @@ public class PersonaServiceImplements implements IPersonaService {
         return (List<Persona>) personaRepository.findAll();
     }
 
-
     @Override
-    public Persona buscarPorID(long id) { 
+    public Persona buscarPorID(long id) {
         return personaRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void guardar (Persona user) {
-        personaRepository.save(user);       
+    public void guardar(Persona user) {
+        personaRepository.save(user);
     }
 
     @Override
     public List<Persona> listarDni(Long dni) {
-        
+
         return personaRepository.findByDni(dni);
     }
 
     @Override
-    public Persona buscarPorDni(long dni){
+    public Persona buscarPorDni(long dni) {
         return personaRepository.findByDni(dni);
     }
-   
 
-
-    
-    
 }

@@ -8,9 +8,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonaRepository extends CrudRepository<Persona, Long>{
+public interface PersonaRepository extends CrudRepository<Persona, Long> {
 
     List<Persona> findAll();
-    List<Persona> findByDni (Long dni); 
+
+    List<Persona> findByDni(Long dni);
+
     Persona findByDni(long dni);
 }

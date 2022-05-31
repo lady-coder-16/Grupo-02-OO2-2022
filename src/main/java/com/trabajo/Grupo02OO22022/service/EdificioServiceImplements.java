@@ -18,16 +18,13 @@ public class EdificioServiceImplements implements IEdificioService {
 
     @Override
     public List<Edificio> listaEdificios() {
-        
+
         return (List<Edificio>) EdificioRepository.findAll();
     }
 
     @Override
-    public Edificio buscarPorID(long id) { 
+    public Edificio buscarPorID(long id) {
         return EdificioRepository.findById(id).orElse(null);
     }
 
-
-
-    
 }

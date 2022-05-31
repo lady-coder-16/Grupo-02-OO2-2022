@@ -14,36 +14,26 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table (name="role")
-@Getter @Setter @RequiredArgsConstructor
+@Table(name = "role")
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Role implements Serializable {
-    
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	@Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
 
     private String descripcion;
 
-    @Column(columnDefinition="tinyint(1) default 1" , nullable = false)
-    private Boolean enabled; 
+    @Column(columnDefinition = "tinyint(1) default 1", nullable = false)
+    private Boolean enabled;
 
-    
-   
-
-
-    
-    
-   
-
-    
-
-
-    
 }

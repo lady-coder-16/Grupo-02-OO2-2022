@@ -58,13 +58,13 @@ public class NotaPedido implements Serializable {
 	private int cantEstudiantes;
 
 	@ManyToOne
-    @JoinColumn(name = "materia_id")
+	@JoinColumn(name = "materia_id")
 	private Materia materia;
 
 	@Column(name = "observaciones", length = 120)
 	private String observaciones;
 
 	@OneToOne
-    @JoinColumn(name = "espacio_id")
+	@JoinColumn(name = "espacio_id")
 	private Espacio espacio;
 }

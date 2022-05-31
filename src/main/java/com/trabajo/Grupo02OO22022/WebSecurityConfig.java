@@ -30,7 +30,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         builder.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(passEncoder)
-                .usersByUsernameQuery("SELECT username, password, u.enabled FROM user u inner join persona p on u.id = p.id where username =?")
+                .usersByUsernameQuery(
+                        "SELECT username, password, u.enabled FROM user u inner join persona p on u.id = p.id where username =?")
                 .authoritiesByUsernameQuery(
                         "Select u.username, r.descripcion FROM role r inner join user u on r.id=u.role_id where u.username=?");
 
@@ -41,11 +42,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Configuracion de http para acceso publico
         http.authorizeRequests()
-        .antMatchers("/", "/home", "/index", "/css/**", "/js/**", "/images/**", "/views/roles/**", "/views/users/**","/edificios/**").permitAll().anyRequest()
-        .authenticated().and().formLogin()
-        .successHandler(loginSuccess)
-        .loginPage("/login")
-        .permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll();
+                .antMatchers("/", "/home", "/index", "/css/**", "/js/**", "/images/**", "/views/roles/**",
+                        "/views/users/**", "/edificios/**")
+                .permitAll().anyRequest()
+                .authenticated().and().formLogin()
+                .successHandler(loginSuccess)
+                .loginPage("/login")
+                .permitAll().and().logout().logoutUrl("/logout").logoutSuccessUrl("/logout").permitAll();
 
     }
 

@@ -16,14 +16,16 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "user")
-@Getter @Setter @RequiredArgsConstructor
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class User extends Persona implements Serializable {
 
     /**
      * 
      */
-    private static final long serialVersionUID = 1L;   
-        
+    private static final long serialVersionUID = 1L;
+
     @NotEmpty
     @Email
     private String email;
@@ -31,16 +33,14 @@ public class User extends Persona implements Serializable {
     @NotEmpty
     private String username;
 
-    @Column(columnDefinition="tinyint(1) default 1" , nullable = false)
+    @Column(columnDefinition = "tinyint(1) default 1", nullable = false)
     private boolean enabled;
-    
+
     @NotEmpty
     private String password;
-    
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
-
 
 }

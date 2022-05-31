@@ -10,20 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.trabajo.Grupo02OO22022.entity.Aula;
 import com.trabajo.Grupo02OO22022.entity.Curso;
-import com.trabajo.Grupo02OO22022.entity.Edificio;
 import com.trabajo.Grupo02OO22022.entity.Espacio;
 import com.trabajo.Grupo02OO22022.entity.Final;
 import com.trabajo.Grupo02OO22022.entity.Laboratorio;
@@ -50,6 +45,7 @@ public class EspacioController {
 	@Qualifier("notaPedidoService")
 	public NotaPedidoServiceImplements pedidoService;
 
+	@Secured({ "ROLE_ASISTENTE", "ROLE_ADMIN_GENERAL" })
 	@GetMapping("/buscarespacio")
 	public ModelAndView buscarEspacio() {
 		LocalDate fecha = LocalDate.now();
@@ -81,6 +77,7 @@ public class EspacioController {
 
 	}
 
+	@Secured({ "ROLE_ASISTENTE", "ROLE_ADMIN_GENERAL" })
 	@PostMapping("/espacioencontrado")
 	public ModelAndView espacioEncontrado(String fecha, char turno, long idaula, RedirectAttributes attributes) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
@@ -94,26 +91,22 @@ public class EspacioController {
 			espacio = espacioService.traerEspacio(fecha1, turno, (Aula) laboratorio);
 
 		}
-		
-		
-		
 
-		if(espacio==null) {
-			attributes.addFlashAttribute("error","Espacio no encontrado");
+		if (espacio == null) {
+			attributes.addFlashAttribute("error", "Espacio no encontrado");
 			mAV.setViewName(ViewRouteHelper.REDIRECT_HOME);
 		} else {
 			mAV.setViewName(ViewRouteHelper.RESULTADOESPACIO);
 
 		}
-		
+
 		mAV.addObject("espacio", espacio);
-
-
 
 		return mAV;
 
 	}
 
+	@Secured("ROLE_ADMIN_GENERAL")
 	@GetMapping("/agregarespacio")
 	public ModelAndView agragarEspacio(Model model) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.AGREGARESPACIO);
@@ -146,6 +139,7 @@ public class EspacioController {
 		return mAV;
 	}
 
+	@Secured("ROLE_ADMIN_GENERAL")
 	@PostMapping("/save")
 	public ModelAndView guardar(@Valid @ModelAttribute Espacio espacio, BindingResult result, Model model,
 			RedirectAttributes attributes) {
@@ -183,9 +177,9 @@ public class EspacioController {
 				mAV.addObject("espacio", espacio);
 				mAV.addObject("listaAula", listaAula);
 				espacio.setFecha(fecha);
-				attributes.addFlashAttribute("error","Espacio ya existe");
+				attributes.addFlashAttribute("error", "Espacio ya existe");
 				mAV.setViewName(ViewRouteHelper.REDIRECT_HOME);
-				
+
 			}
 		} else if (laboratorio.getEdificio() != null) {
 			if (espacioService.traerEspacio(espacio.getFecha(), espacio.getTurno(), (Aula) laboratorio) == null) {
@@ -205,6 +199,7 @@ public class EspacioController {
 		return mAV;
 	}
 
+	@Secured("ROLE_ADMIN_GENERAL")
 	@GetMapping("/{id}")
 	public ModelAndView asignarEspacio(@PathVariable("id") Long idEspacio, Model model, RedirectAttributes attribute) {
 
@@ -212,28 +207,28 @@ public class EspacioController {
 		long idPedido = 0;
 		List<NotaPedido> notaPedido = pedidoService.listarTodos();
 
-		mAV.addObject("notaPedido",notaPedido);
-		mAV.addObject("idPedido",idPedido);
-		mAV.addObject("idEspacio",idEspacio);
-
+		mAV.addObject("notaPedido", notaPedido);
+		mAV.addObject("idPedido", idPedido);
+		mAV.addObject("idEspacio", idEspacio);
 
 		return mAV;
 	}
-	
+
+	@Secured("ROLE_ADMIN_GENERAL")
 	@PostMapping("/asignado/{id}")
-	public ModelAndView espacioAsignado(@PathVariable("id") Long idEspacio, Long idPedido, Model model, RedirectAttributes attribute){
-		
+	public ModelAndView espacioAsignado(@PathVariable("id") Long idEspacio, Long idPedido, Model model,
+			RedirectAttributes attribute) {
 
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
 		Espacio espacio = espacioService.buscarPorID(idEspacio);
 		Final final1 = pedidoService.buscarPorID(idPedido);
 		Curso curso = pedidoService.buscarPorIDCurso(idPedido);
-		if(final1 != null){
+		if (final1 != null) {
 			final1.setEspacio(espacio);
 			final1.getEspacio().setAula(espacio.getAula());
 			final1.getEspacio().getAula().setEdificio(espacio.getAula().getEdificio());
 			pedidoService.insertOrUpdate(final1);
-		}else{
+		} else {
 			curso.setEspacio(espacio);
 			curso.getEspacio().setAula(espacio.getAula());
 			curso.getEspacio().getAula().setEdificio(espacio.getAula().getEdificio());
@@ -245,10 +240,8 @@ public class EspacioController {
 		attribute.addFlashAttribute("success", "Editado con Exito");
 		return mAV;
 	}
-	
-	
-	
-	
+
+	@Secured("ROLE_ADMIN_GENERAL")
 	@GetMapping("/agregarespaciomes")
 	public ModelAndView agregarEspaciomes(Model model) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.AGREGARESPACIOMES);
@@ -279,28 +272,25 @@ public class EspacioController {
 
 		return mAV;
 	}
-	
-	
-	//Agrega un Espacio para todo el mes y año designado 
+
+	// Agrega un Espacio para todo el mes y año designado
+	@Secured("ROLE_ADMIN_GENERAL")
 	@PostMapping("/guardarmes")
-	public ModelAndView agregarEspacioMes( @Valid @ModelAttribute Espacio espacio, BindingResult result, Model model,
-			RedirectAttributes attribute){
+	public ModelAndView agregarEspacioMes(@Valid @ModelAttribute Espacio espacio, BindingResult result, Model model,
+			RedirectAttributes attribute) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REDIRECT_HOME);
-		
+
 		long idaula = espacio.getAula().getId();
-		int anio  = espacio.getFecha().getYear();
+		int anio = espacio.getFecha().getYear();
 		int mes = espacio.getFecha().getMonthValue();
 		char turno = espacio.getTurno();
-		
-		
-	
-		
+
 		List<Aula> listaAula = aulaService.listaAulas();
 
 		for (Aula aula : listaAula) {
-			
-			if (aula.getId()==idaula) {
-				
+
+			if (aula.getId() == idaula) {
+
 				if (aula instanceof Tradicional) {
 					espacioService.agregarEspacioMes(mes, anio, turno, aula);
 				}
@@ -309,16 +299,13 @@ public class EspacioController {
 					espacioService.agregarEspacioMes(mes, anio, turno, aula);
 
 				}
-				
-				
+
 			}
-		
 
 		}
 		attribute.addFlashAttribute("success", "Espacios agregados con Exito");
 
 		return mAV;
 	}
-	
 
 }

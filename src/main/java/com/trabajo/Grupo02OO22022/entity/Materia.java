@@ -1,6 +1,5 @@
 package com.trabajo.Grupo02OO22022.entity;
 
-
 import java.io.Serializable;
 import java.util.Set;
 
@@ -28,35 +27,30 @@ import lombok.Setter;
 public class Materia implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY) 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotEmpty
-    @Column(name="codMateria", nullable=false, length = 30)
+    @Column(name = "codMateria", nullable = false, length = 30)
     private int codMateria;
-    
+
     @NotEmpty
-    @Column(name="materia", nullable=false, length=45)
+    @Column(name = "materia", nullable = false, length = 45)
     private String materia;
-    
-    
-    //Faltan las relaciones entre carrera/docente con materia
+
+    // Faltan las relaciones entre carrera/docente con materia
     @NotEmpty
     @ManyToOne
     @JoinColumn(name = "carrera_id")
     private Carrera carrera;
 
     @ManyToMany
-	@JoinTable(name="materiaxdocente"
-			, joinColumns=@JoinColumn(name="materiaId")
-			, inverseJoinColumns=@JoinColumn(name="docenteId")
-	)
-    private Set<Docente> docente; 
+    @JoinTable(name = "materiaxdocente", joinColumns = @JoinColumn(name = "materiaId"), inverseJoinColumns = @JoinColumn(name = "docenteId"))
+    private Set<Docente> docente;
 
-  
 }

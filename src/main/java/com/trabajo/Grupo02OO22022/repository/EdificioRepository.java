@@ -12,6 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface EdificioRepository extends CrudRepository<Edificio, Long> {
 
     List<Edificio> findAll();
-    
-    
+
 }

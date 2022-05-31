@@ -17,22 +17,22 @@ public class UserServiceImplements implements IUserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> listarTodos() {   
-        return (List<User>)userRepository.findAll();
+    public List<User> listarTodos() {
+        return (List<User>) userRepository.findAll();
     }
 
     @Override
-    public List<User> listarActivos() {   
-        return (List<User>)userRepository.findByEnabledTrue();
+    public List<User> listarActivos() {
+        return (List<User>) userRepository.findByEnabledTrue();
     }
 
     @Override
     public void guardar(User user) {
-        userRepository.save(user);       
+        userRepository.save(user);
     }
 
     @Override
-    public User buscarPorID(long id) { 
+    public User buscarPorID(long id) {
         return userRepository.findById(id).orElse(null);
     }
 
@@ -41,5 +41,4 @@ public class UserServiceImplements implements IUserService {
         userRepository.deleteById(id);
     }
 
-    
 }

@@ -1,6 +1,5 @@
 package com.trabajo.Grupo02OO22022.entity;
 
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -30,7 +29,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Espacio implements Serializable {
 
-	
 	/**
 	 * 
 	 */
@@ -39,26 +37,26 @@ public class Espacio implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotEmpty
 	@NonNull
 	@Column(name = "fecha", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
-	
+
 	@NotEmpty
 	@NonNull
 	@Column(name = "turno", nullable = false)
 	private char turno;
-	
+
 	@NotEmpty
 	@NonNull
 	@Column(name = "libre", nullable = false)
 	private boolean libre;
-	
+
 	@ManyToOne
 	@NonNull
-    @JoinColumn(name = "aula_id")
+	@JoinColumn(name = "aula_id")
 	private Aula aula;
-	
+
 }

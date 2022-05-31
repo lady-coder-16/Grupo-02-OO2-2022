@@ -22,13 +22,13 @@
 					<th>Aula</th>
 					<th>CantEstudiantes</th>
 					<th>Materia</th>
-                    <th>Observaciones</th>
-                    <th>Fecha de examen</th>
-					<th sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')"  >AsignarEspacio:</th>
+					<th>Observaciones</th>
+					<th>Fecha de examen</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN_GENERAL')">AsignarEspacio:</th>
 					<th>Espacio Asignado:</th>
-                    <th>Eliminar</th>
+					<th>Eliminar</th>
 
-                    
+
 				</tr>
 			</thead>
 			<tbody bgcolor="grey">
@@ -37,16 +37,21 @@
 					<td><span th:text="${final.fecha}" /></td>
 					<td><span th:text="${final.turno}" /></td>
 					<td><span th:text="${final.aula}" /></td>
-                    <td><span th:text="${final.cantEstudiantes}" /></td>
+					<td><span th:text="${final.cantEstudiantes}" /></td>
 					<td><span th:text="${final.materia.materia}" /></td>
 					<td><span th:text="${final.observaciones}" /></td>
 					<td><span th:text="${final.fechaExamen}" /></td>
-                    <td sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')" ><a class="btn btn-success" th:href="@{/espacio/buscarespacio}"  sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')"  role="button">Asignar</a></td>
-					<td ><span th:if="${final.espacio.aula.numero == 0}">Espacio no asignado</span>
-						<span class="btn btn-primary" th:unless="${final.espacio.aula.numero == 0}" th:data-thing="'Fecha:' + ' ' + ${final.espacio.fecha} + ' ' + 'Aula:' + ' ' + ${final.espacio.aula.numero} + ' ' + ${final.espacio.aula.edificio.edificio} " onclick="javascript:alert(this.getAttribute('data-thing'));">Ver espacio</span></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN_GENERAL')"><a class="btn btn-success"
+							th:href="@{/espacio/buscarespacio}" sec:authorize="hasRole('ROLE_ADMIN_GENERAL')"
+							role="button">Asignar</a></td>
+					<td><span th:if="${final.espacio.aula.numero == 0}">Espacio no asignado</span>
+						<span class="btn btn-primary" th:unless="${final.espacio.aula.numero == 0}"
+							th:data-thing="'Fecha:' + ' ' + ${final.espacio.fecha} + ' ' + 'Aula:' + ' ' + ${final.espacio.aula.numero} + ' ' + ${final.espacio.aula.edificio.edificio} "
+							onclick="javascript:alert(this.getAttribute('data-thing'));">Ver espacio</span>
+					</td>
 
-					<td><a class="btn btn-danger" th:href="@{/pedido/delete/}+${final.id}"  role="button"
-						onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
+					<td><a class="btn btn-danger" th:href="@{/pedido/delete/}+${final.id}" role="button"
+							onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
 				</tr>
 			</tbody>
 
@@ -63,12 +68,12 @@
 					<th>Aula</th>
 					<th>CantEstudiantes</th>
 					<th>Materia</th>
-                    <th>Observaciones</th>
-                    <th>Carrera</th>
-                    <th>Proyector?</th>
-					<th sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')"  >AsignarEspacio:</th>
+					<th>Observaciones</th>
+					<th>Carrera</th>
+					<th>Proyector?</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN_GENERAL')">AsignarEspacio:</th>
 					<th>Espacio Asignado:</th>
-                    <th>Eliminar</th>
+					<th>Eliminar</th>
 
 
 				</tr>
@@ -79,20 +84,25 @@
 					<td><span th:text="${curso1.fecha}" /></td>
 					<td><span th:text="${curso1.turno}" /></td>
 					<td><span th:text="${curso1.aula}" /></td>
-                    <td><span th:text="${curso1.cantEstudiantes}" /></td>
+					<td><span th:text="${curso1.cantEstudiantes}" /></td>
 					<td><span th:text="${curso1.materia.materia}" /></td>
 					<td><span th:text="${curso1.observaciones}" /></td>
 					<td><span th:text="${curso1.carrera}" /></td>
-                    <td><span th:text="${curso1.proyector} ? 'SI' : 'NO'" /></td>
-                    <td sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')" ><a class="btn btn-success" th:href="@{/espacio/buscarespacio}"  sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')"role="button">Asignar</a></td>
-					<td ><span th:if="${curso1.espacio.aula.numero == 0}">Espacio no asignado</span>
-						<span class="btn btn-primary" th:unless="${curso1.espacio.aula.numero == 0}"  th:data-thing="'Fecha:' + ' ' + ${curso1.espacio.fecha} + ' ' + 'Aula:' + ' ' + ${curso1.espacio.aula.numero} + ' ' + ${curso1.espacio.aula.edificio.edificio} " onclick="javascript:alert(this.getAttribute('data-thing'));">Ver espacio</span></td>
+					<td><span th:text="${curso1.proyector} ? 'SI' : 'NO'" /></td>
+					<td sec:authorize="hasRole('ROLE_ADMIN_GENERAL')"><a class="btn btn-success"
+							th:href="@{/espacio/buscarespacio}" sec:authorize="hasRole('ROLE_ADMIN_GENERAL')"
+							role="button">Asignar</a></td>
+					<td><span th:if="${curso1.espacio.aula.numero == 0}">Espacio no asignado</span>
+						<span class="btn btn-primary" th:unless="${curso1.espacio.aula.numero == 0}"
+							th:data-thing="'Fecha:' + ' ' + ${curso1.espacio.fecha} + ' ' + 'Aula:' + ' ' + ${curso1.espacio.aula.numero} + ' ' + ${curso1.espacio.aula.edificio.edificio} "
+							onclick="javascript:alert(this.getAttribute('data-thing'));">Ver espacio</span>
+					</td>
 
-					<td><a class="btn btn-danger" th:href="@{/pedido/delete/}+${curso1.id}"  role="button"
-						onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
-                </tr>
+					<td><a class="btn btn-danger" th:href="@{/pedido/delete/}+${curso1.id}" role="button"
+							onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
+				</tr>
 
-				
+
 			</tbody>
 		</table>
 

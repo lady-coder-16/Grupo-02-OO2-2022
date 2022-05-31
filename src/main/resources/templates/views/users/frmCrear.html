@@ -38,11 +38,12 @@
 							</small>
 						</div>
 						<div class="form-group row">
-							
+
 							<label class="col-md-2" for="tipo_documento">Tipo de documento:</label>
-							<select class="form-control form-control-sm col-md-6" th:field="*{tipoDocumento}" id="tipoDocumento">
-								<option  value="DNI">DNI</option>
-								<option  value="Libreta">Libreta</option>
+							<select class="form-control form-control-sm col-md-6" th:field="*{tipoDocumento}"
+								id="tipoDocumento">
+								<option value="DNI">DNI</option>
+								<option value="Libreta">Libreta</option>
 							</select>
 							<small class="form-text text-danger" th:if="${#fields.hasErrors('tipoDocumento')}"
 								th:errors="*{tipoDocumento}">
@@ -51,10 +52,9 @@
 						<div class="form-group row">
 
 							<label class="col-md-2" for="dni">Nro de documento:</label>
-							<input type="text" th:field="*{dni}" class="form-control form-control-sm col-md-6"
-								id="dni" placeholder="Numero de documento">
-							<small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}"
-								th:errors="*{dni}">
+							<input type="text" th:field="*{dni}" class="form-control form-control-sm col-md-6" id="dni"
+								placeholder="Numero de documento">
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">
 							</small>
 						</div>
 						<div class="form-group row">
@@ -87,7 +87,7 @@
 
 						<div class="form-group row">
 							<label class="col-md-2" for="role">Role:</label>
-							<select type="text"  th:field="*{role}" class="form-control form-control-sm col-md-6"
+							<select type="text" th:field="*{role}" class="form-control form-control-sm col-md-6"
 								id="nombre">
 
 								<option th:each="r:${role}" th:value="${r.id}" th:text="${r.nombre}">
@@ -96,7 +96,7 @@
 							</select>
 
 						</div>
-						
+
 						<div class="card-footer bg-dark">
 							<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
 							<a class="btn btn-primary btn-sm" th:href="@{/views/users/}" role="button">Cancelar</a>

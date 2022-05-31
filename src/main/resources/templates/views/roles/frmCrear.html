@@ -6,7 +6,7 @@
 	</head>
 
 	<body class="body-generic">
-	
+
 		<header th:replace="plantilla/template :: header"> </header>
 
 
@@ -19,11 +19,11 @@
 						<div class="form-group row">
 
 							<input type="hidden" th:field="*{id}">
-							
+
 							<label class="col-md-2" for="tipo">Nombre:</label>
 							<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"
 								id="nombre" placeholder="Nombres del rol">
-								
+
 							<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
 								th:errors="*{nombre}">
 							</small>
@@ -31,12 +31,12 @@
 							<label class="col-md-2" for="tipo">Descripcion:</label>
 							<input type="text" th:field="*{descripcion}" class="form-control form-control-sm col-md-6"
 								id="descripcion" placeholder="Descripcion del rol">
-								
+
 							<small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}"
 								th:errors="*{descripcion}">
 							</small>
-						</div>		
-										
+						</div>
+
 						<div class="card-footer bg-dark">
 							<input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
 							<a class="btn btn-primary btn-sm" th:href="@{/views/roles/}" role="button">Cancelar</a>

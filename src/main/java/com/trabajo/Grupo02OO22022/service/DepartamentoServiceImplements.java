@@ -21,20 +21,14 @@ public class DepartamentoServiceImplements implements IDepartamentoService {
         return (List<Departamento>) DepartamentoRepository.findAll();
     }
 
-
     @Override
-    public Departamento buscarPorID(long id) { 
+    public Departamento buscarPorID(long id) {
         return DepartamentoRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void guardar (Departamento departamento) {
-        DepartamentoRepository.save(departamento);       
+    public void guardar(Departamento departamento) {
+        DepartamentoRepository.save(departamento);
     }
 
-
-
-
-    
-    
 }

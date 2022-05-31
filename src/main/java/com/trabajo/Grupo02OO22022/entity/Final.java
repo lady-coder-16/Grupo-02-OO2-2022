@@ -1,6 +1,5 @@
 package com.trabajo.Grupo02OO22022.entity;
 
-
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -14,25 +13,21 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
 @Table(name = "final")
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Final extends NotaPedido{
+public class Final extends NotaPedido {
 
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@NotEmpty
 	@Column(name = "fechaExamen", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaExamen;
-	
-	
 
 }

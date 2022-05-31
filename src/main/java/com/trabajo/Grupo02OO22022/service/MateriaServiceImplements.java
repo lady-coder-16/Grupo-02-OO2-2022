@@ -18,18 +18,17 @@ public class MateriaServiceImplements implements IMateriaService {
 
     @Override
     public List<Materia> listaMaterias() {
-        
+
         return (List<Materia>) MateriaRepository.findAll();
     }
 
-
     @Override
-    public void guardar (Materia materia) {
-        MateriaRepository.save(materia);       
+    public void guardar(Materia materia) {
+        MateriaRepository.save(materia);
     }
 
     @Override
-    public Materia buscarPorID(long id) { 
+    public Materia buscarPorID(long id) {
         return MateriaRepository.findById(id).orElse(null);
     }
 
@@ -38,6 +37,4 @@ public class MateriaServiceImplements implements IMateriaService {
         MateriaRepository.deleteById(id);
     }
 
-
-    
 }

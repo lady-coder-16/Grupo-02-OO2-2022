@@ -20,7 +20,7 @@
 					<th>Turno</th>
 					<th>Libre?</th>
 					<th>Aula:</th>
-					<th  sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')"  >EditarLibre:</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN_GENERAL')">EditarLibre:</th>
 				</tr>
 			</thead>
 			<tbody bgcolor="grey">
@@ -30,9 +30,11 @@
 				<td th:text="${espacio.libre} ? 'SI' : 'NO'" />
 				</td>
 				<td><span th:text="${espacio.aula.numero}" /></td>
-				
-					<!--Boton Editar-->
-                    <td sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')" ><a class="btn btn-success btn-sm" th:href="@{/espacio/}+${espacio.id}"  sec:authorize= "hasRole('ROLE_ADMIN_GENERAL')" role="button">EditarLibre</a></td>
+
+				<!--Boton Editar-->
+				<td sec:authorize="hasRole('ROLE_ADMIN_GENERAL')"><a class="btn btn-success btn-sm"
+						th:href="@{/espacio/}+${espacio.id}" sec:authorize="hasRole('ROLE_ADMIN_GENERAL')"
+						role="button">EditarLibre</a></td>
 
 			</tbody>
 

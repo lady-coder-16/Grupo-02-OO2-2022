@@ -22,15 +22,17 @@
 
             <div class="container">
                 <p>
-                    <a class="btn btn-primary btn-sm" th:href="@{/views/roles/create}" sec:authorize= "hasRole('ROLE_ADMIN')" role="button">Nuevo
+                    <a class="btn btn-primary btn-sm" th:href="@{/views/roles/create}"
+                        sec:authorize="hasRole('ROLE_ADMIN')" role="button">Nuevo
                         Rol</a>
-                    <a class="btn btn-success btn-sm" th:href="@{/views/roles/(format=pdf)}" sec:authorize= "hasRole('ROLE_AUDITOR')" role="button">Exportar a PDF
+                    <a class="btn btn-success btn-sm" th:href="@{/views/roles/(format=pdf)}"
+                        sec:authorize="hasRole('ROLE_AUDITOR')" role="button">Exportar a PDF
                     </a>
 
 
-        
-                    
-                </a>
+
+
+                    </a>
 
                 </p>
             </div>
@@ -44,8 +46,8 @@
                         <!--th scope="col">Nombre</th-->
                         <th scope="col">Role</th>
                         <th scope="col">Descripcion</th>
-                        <th scope="col" >Editar</th>
-                        <th scope="col" >Borrar</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Borrar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,10 +58,11 @@
 
                         <!--td th:text="${cl.role.tipo}"></td-->
                         <!--Boton Editar-->
-                        <td><a class="btn btn-success btn-sm" th:href="@{/views/roles/edit/}+${cl.id}" sec:authorize= "hasRole('ROLE_ADMIN')"
-                                role="button">Edit</a></td>
-                         <!--Boton borrar-->
-                        <td><a class="btn btn-danger btn-sm" th:href="@{/views/roles/delete/}+${cl.id}" sec:authorize= "hasRole('ROLE_ADMIN')" role="button"
+                        <td><a class="btn btn-success btn-sm" th:href="@{/views/roles/edit/}+${cl.id}"
+                                sec:authorize="hasRole('ROLE_ADMIN')" role="button">Edit</a></td>
+                        <!--Boton borrar-->
+                        <td><a class="btn btn-danger btn-sm" th:href="@{/views/roles/delete/}+${cl.id}"
+                                sec:authorize="hasRole('ROLE_ADMIN')" role="button"
                                 onclick="return confirm('Seguro que desea eliminar');">Delete</a></td>
 
                     </tr>

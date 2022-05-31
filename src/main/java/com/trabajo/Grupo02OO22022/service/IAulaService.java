@@ -7,10 +7,12 @@ import com.trabajo.Grupo02OO22022.entity.Tradicional;
 
 public interface IAulaService {
 
-    public List <Aula> listaAulas();
-    public void guardar (Aula aula);
-    public Tradicional buscarPorID (long id);
-    public Laboratorio buscarPorIDLab (long id);
+    public List<Aula> listaAulas();
 
-    
+    public void guardar(Aula aula);
+
+    public Tradicional buscarPorID(long id);
+
+    public Laboratorio buscarPorIDLab(long id);
+
 }

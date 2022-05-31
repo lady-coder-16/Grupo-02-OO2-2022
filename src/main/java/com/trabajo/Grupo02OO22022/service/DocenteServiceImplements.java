@@ -17,19 +17,17 @@ public class DocenteServiceImplements implements IDocenteService {
     private DocenteRepository DocenteRepository;
 
     @Override
-    public List<Docente> listarTodos() {   
-        return (List<Docente>)DocenteRepository.findAll();
+    public List<Docente> listarTodos() {
+        return (List<Docente>) DocenteRepository.findAll();
     }
-
-   
 
     @Override
     public void guardar(Docente Docente) {
-        DocenteRepository.save(Docente);       
+        DocenteRepository.save(Docente);
     }
 
     @Override
-    public Docente buscarPorID(long id) { 
+    public Docente buscarPorID(long id) {
         return DocenteRepository.findById(id).orElse(null);
     }
 
@@ -38,5 +36,4 @@ public class DocenteServiceImplements implements IDocenteService {
         DocenteRepository.deleteById(id);
     }
 
-    
 }

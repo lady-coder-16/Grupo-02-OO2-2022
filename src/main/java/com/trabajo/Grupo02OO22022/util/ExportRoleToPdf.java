@@ -39,19 +39,20 @@ public class ExportRoleToPdf extends AbstractPdfView {
         Font fuenteCeldas = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Color.black);
         Font fuenteContenidoData = FontFactory.getFont(FontFactory.COURIER, 12, Color.black);
 
-        //  document viene por parametro
+        // document viene por parametro
 
         document.setPageSize(PageSize.A4);
         document.setMargins(-10, -10, 30, 20);
         document.open();
 
-        //  objeto null que va a servir para crear el resto de celdas del documento
+        // objeto null que va a servir para crear el resto de celdas del documento
         PdfPCell celda = null;
 
-        //  Tabla para el titulo
+        // Tabla para el titulo
         PdfPTable tablaTitulo = new PdfPTable(1);
 
-        //  ( new Phrase ("texto a mostrar",fuente)) en caso de fuente estar vacio usar una fuente por defecto
+        // ( new Phrase ("texto a mostrar",fuente)) en caso de fuente estar vacio usar
+        // una fuente por defecto
         celda = new PdfPCell(new Phrase("Listado de Roles", fuenteTitulo));
 
         // // La celda no tendra bordes

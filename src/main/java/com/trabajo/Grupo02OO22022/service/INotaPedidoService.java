@@ -8,16 +8,22 @@ import com.trabajo.Grupo02OO22022.entity.NotaPedido;
 
 public interface INotaPedidoService {
 
-    public List <NotaPedido> listarTodos();
-    public List <Final> getAll();
-    public List <Curso> getAll1();
+    public List<NotaPedido> listarTodos();
+
+    public List<Final> getAll();
+
+    public List<Curso> getAll1();
+
     public Final insertOrUpdate(Final final1);
+
     public Curso insertOrUpdateCurso(Curso curso);
+
     public void guardar(NotaPedido notaPedido);
-    public void eliminar (long id);
-    
+
+    public void eliminar(long id);
+
     public Final buscarPorID(long id);
+
     public Curso buscarPorIDCurso(long id);
 
-    
 }

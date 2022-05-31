@@ -1,16 +1,10 @@
 package com.trabajo.Grupo02OO22022.entity;
 
-
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import javax.validation.constraints.NotEmpty;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -21,11 +15,9 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 public class Docente extends Persona implements Serializable {
-	
+
 	@NotEmpty
-	@Column(name="nroLegajo")
+	@Column(name = "nroLegajo")
 	private int nroLegajo;
-	
-	
 
 }

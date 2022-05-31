@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.trabajo.Grupo02OO22022.entity.Aula;
 import com.trabajo.Grupo02OO22022.entity.Edificio;
 import com.trabajo.Grupo02OO22022.entity.Laboratorio;
-import com.trabajo.Grupo02OO22022.entity.Role;
 import com.trabajo.Grupo02OO22022.entity.Tradicional;
-import com.trabajo.Grupo02OO22022.entity.User;
 import com.trabajo.Grupo02OO22022.helper.ViewRouteHelper;
-import com.trabajo.Grupo02OO22022.service.IAulaService;
 import com.trabajo.Grupo02OO22022.service.IEdificioService;
 
 @Controller
@@ -29,8 +25,6 @@ public class EdificioController {
 
 	@Autowired
 	private IEdificioService edificioService;
-
-
 
 	@GetMapping("/")
 	public ModelAndView listarEdificios() {
@@ -44,7 +38,8 @@ public class EdificioController {
 	}
 
 	@GetMapping("/{id}")
-	public ModelAndView listarEdificiosYaulas(@PathVariable("id") Long idEdificio, Model model, RedirectAttributes attributes) {
+	public ModelAndView listarEdificiosYaulas(@PathVariable("id") Long idEdificio, Model model,
+			RedirectAttributes attributes) {
 
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.EDIFICIOYAULAS);
 

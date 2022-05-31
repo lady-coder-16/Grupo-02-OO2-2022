@@ -15,7 +15,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(@RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "logout?", required = false)  String logout, 
+            @RequestParam(value = "logout?", required = false) String logout,
             Model model, Principal principal,
             RedirectAttributes attribute) {
 
@@ -27,8 +27,6 @@ public class LoginController {
             attribute.addFlashAttribute("warning", "Usted ya ha inicidado sesion");
             url = "redirect:/home";
         }
-
-
 
         return url;
     }

@@ -16,24 +16,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Laboratorio extends Aula{
+public class Laboratorio extends Aula {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@NotEmpty
 	@Column(name = "cantPC", nullable = false)
 	private int cantPC;
-	
+
 	@NotEmpty
 	@Column(name = "cantSillas", nullable = false)
 	private int cantSillas;
 
-
 }
-
-
-
-	

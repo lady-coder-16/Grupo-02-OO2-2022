@@ -69,7 +69,7 @@ public class ExportUserToPdf extends AbstractPdfView {
         // en los float se puede poner ajustar el ancho de cada columnna, agregar o
         // quitar floats segun la cantidad de columnas
         // tablaUsers.setWidths(relativeWidths);
-        tablaUsers.setWidths(new float[] { 2.9f, 2.5f, 3.4f, 3f, 3f, 8f  ,3f});
+        tablaUsers.setWidths(new float[] { 2.9f, 2.5f, 3.4f, 3f, 3f, 8f, 3f });
 
         // Repetir este bloque para cada columna del pdf
         celda = new PdfPCell(new Phrase("Apellido", fuenteCeldas));

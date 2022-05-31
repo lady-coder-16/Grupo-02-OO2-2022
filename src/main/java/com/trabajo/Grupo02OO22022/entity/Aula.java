@@ -33,14 +33,13 @@ public class Aula implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotEmpty
 	@Column(name = "numero", nullable = false)
 	private int numero;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "edificio_id")
+	@JoinColumn(name = "edificio_id")
 	private Edificio edificio;
-	
-	
+
 }

@@ -18,17 +18,17 @@ public class CarreraServiceImplements implements ICarreraService {
 
     @Override
     public List<Carrera> listaCarreras() {
-        
+
         return (List<Carrera>) CarreraRepository.findAll();
     }
 
     @Override
-    public void guardar (Carrera carrera) {
-        CarreraRepository.save(carrera);       
+    public void guardar(Carrera carrera) {
+        CarreraRepository.save(carrera);
     }
 
     @Override
-    public Carrera buscarPorID(long id) { 
+    public Carrera buscarPorID(long id) {
         return CarreraRepository.findById(id).orElse(null);
     }
 
@@ -37,6 +37,4 @@ public class CarreraServiceImplements implements ICarreraService {
         CarreraRepository.deleteById(id);
     }
 
-    
-    
 }
