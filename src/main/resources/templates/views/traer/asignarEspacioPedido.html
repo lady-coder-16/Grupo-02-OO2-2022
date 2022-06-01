@@ -15,11 +15,11 @@
 		<!--Formulario-->
 		<div class="container">
 			<div class="card bg-light">
-				<div class="card-header bg-dark text-white" th:text=${titulo}></div>
+				<div class="card-header bg-dark text-white"></div>
 				<div class="card-body">
 
 					<form th:action="@{/espacio/asignado/{id}(id=${idEspacio})}" method="post">
-						<h3 style="color: rgb(192, 192, 192);">Buscar por codigo:</h3>
+						<h3 style="color: black;">Buscar pedido por codigo:</h3>
 						<div class="col-md-6" style="color:white;">
 							<div class="form-group">
 								<label class="small mb-1" for="inputaula">Codigo de pedido:</label>
@@ -27,7 +27,7 @@
 									th:value="${idPedido}" required />
 							</div>
 						</div>
-						<input class="btn btn-info" type="submit" Value="Buscar" />
+						<input class="btn btn-info" type="submit" Value="Guardar" />
 
 					</form>
 

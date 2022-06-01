@@ -62,7 +62,7 @@
 						</div>
 
 						<li class="nav-item">
-							<a class="nav-link" href="/views/traer/buscar" sec:authorize="isAuthenticated()">Buscar
+							<a class="nav-link" href="/views/traer/buscar"  sec:authorize="isAuthenticated() and hasRole('ROLE_ASISTENTE') or hasRole('ROLE_ADMIN_GENERAL') ">Buscar
 								aula</a>
 						</li>
 						<li class="nav-item">
